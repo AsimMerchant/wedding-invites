@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Join us in celebrating the wedding of Asim & Femina. December 4-7, 2026.">
+    <title>Asim & Femina | A Sunset Celebration</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&family=Playball&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Dynamic Background Gradient -->
+    <div class="sunset-bg" id="sunset-bg"></div>
+
+    <!-- Loading Screen -->
+    <div id="loader" class="loader">
+        <div class="loader-circle"></div>
+        <div class="loader-circle loader-circle-delay"></div>
+        <p class="loader-text">A & F</p>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero flex-center">
+        <div class="hero-content text-center stagger-anim">
+            <p class="hero-pre anim-item">We Are Getting Married</p>
+            <h1 class="hero-names anim-item">Asim <span class="amp">&</span> Femina</h1>
+            <p class="hero-date anim-item">December 4 — 7, 2026</p>
+            <div class="hero-divider anim-item"></div>
+            <p class="hero-loc anim-item">Surat & Botad</p>
+        </div>
+        
+        <div class="scroll-prompt anim-item">
+            <span>Scroll</span>
+            <div class="arrow-down"></div>
+        </div>
+    </section>
+
+    <!-- Audio Player -->
+    <div id="audio-control" class="audio-toggle scroll-reveal fade-up">
+        <span class="music-icon">♫</span>
+    </div>
+    <audio id="bg-music" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Get to Know Us -->
+    <section class="get-to-know section-pad">
+        <div class="container text-center">
+            <h2 class="section-title scroll-reveal fade-up">Get to Know Us</h2>
+            <div class="couple-profiles-5">
+                <div class="profile-5 scroll-reveal slide-right">
+                    <div class="profile-circle groom-circle"></div>
+                    <h3>Asim</h3>
+                    <p>The Groom</p>
+                </div>
+                <div class="profile-5 scroll-reveal slide-left">
+                    <div class="profile-circle bride-circle"></div>
+                    <h3>Femina</h3>
+                    <p>The Bride</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Timeline -->
+    <section class="our-story section-pad">
+        <div class="container text-center">
+            <h2 class="section-title scroll-reveal fade-up">Our Journey</h2>
+            
+            <div class="story-container">
+                <div class="story-item scroll-reveal slide-right">
+                    <div class="story-image img-1"></div>
+                    <div class="story-text">
+                        <h3>The Beginning</h3>
+                        <p>A chance encounter that turned into endless conversations and a deep connection.</p>
+                    </div>
+                </div>
+                <div class="story-item reverse scroll-reveal slide-left">
+                    <div class="story-image img-2"></div>
+                    <div class="story-text">
+                        <h3>The Proposal</h3>
+                        <p>A beautiful question asked under the stars, and an immediate, joyful yes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intro / Dua Section -->
+    <section class="intro section-pad">
+        <div class="container text-center">
+            <div class="dua-container scroll-reveal scale-up">
+                <p class="arabic-text">بارك الله لكما وبارك عليكما وجمع بينكما في خير</p>
+                <p class="english-translation">"May Allah bless you and shower His blessings upon you, and may He unite you both in goodness."</p>
+            </div>
+            
+            <div class="quran-quote scroll-reveal fade-up">
+                <p>"And among His signs is that He created for you mates from among yourselves, that you may dwell in tranquility with them, and He has put love and mercy between your hearts."</p>
+                <span>— Quran 30:21</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Moments (Photo Gallery) -->
+    <section class="gallery section-pad" style="overflow: hidden;">
+        <div class="container text-center">
+            <h2 class="section-title scroll-reveal fade-up">Our Moments</h2>
+            <div class="polaroid-deck" id="polaroid-deck">
+                <div class="polaroid-card">
+                    <div class="polaroid-img" style="background-image: url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=400&q=80');"></div>
+                    <div class="polaroid-caption">Laughter and joy</div>
+                </div>
+                <div class="polaroid-card">
+                    <div class="polaroid-img" style="background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=400&q=80');"></div>
+                    <div class="polaroid-caption">A beautiful sunset walk</div>
+                </div>
+                <div class="polaroid-card">
+                    <div class="polaroid-img" style="background-image: url('https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=400&q=80');"></div>
+                    <div class="polaroid-caption">The engagement day</div>
+                </div>
+                <div class="polaroid-card">
+                    <div class="polaroid-img" style="background-image: url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=400&q=80');"></div>
+                    <div class="polaroid-caption">Our first date</div>
+                </div>
+                <div class="polaroid-card">
+                    <div class="polaroid-img" style="background-image: url('https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=400&q=80');"></div>
+                    <div class="polaroid-caption">Forever and always</div>
+                </div>
+            </div>
+            <p class="swipe-hint scroll-reveal fade-up">Swipe to see more</p>
+        </div>
+    </section>
+
+    <!-- Events Section (Modern Cards) -->
+    <section class="events section-pad">
+        <div class="container">
+            <h2 class="section-title text-center scroll-reveal fade-up">Wedding Events</h2>
+            
+            <div class="events-layout">
+                <!-- Mehendi -->
+                <div class="modern-card scroll-reveal slide-right">
+                    <div class="card-date">
+                        <span class="day">04</span>
+                        <span class="month">DEC</span>
+                    </div>
+                    <div class="card-info">
+                        <h3>Mehendi</h3>
+                        <p class="card-loc">📍 Surat</p>
+                        <ul>
+                            <li>Mehendi Ceremony</li>
+                            <li>Lunch & Dinner</li>
+                            <li>Depart for Botad in the evening</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Haldi -->
+                <div class="modern-card scroll-reveal slide-left">
+                    <div class="card-date">
+                        <span class="day">05</span>
+                        <span class="month">DEC</span>
+                    </div>
+                    <div class="card-info">
+                        <h3>Haldi</h3>
+                        <p class="card-loc">📍 Botad</p>
+                        <ul>
+                            <li>Haldi Ceremony at 12:00 PM</li>
+                            <li>Followed by Lunch</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Sangeet -->
+                <div class="modern-card scroll-reveal slide-right">
+                    <div class="card-date">
+                        <span class="day">05</span>
+                        <span class="month">DEC</span>
+                    </div>
+                    <div class="card-info">
+                        <h3>Sangeet</h3>
+                        <p class="card-loc">📍 Botad</p>
+                        <ul>
+                            <li>Sangeet Night at 8:00 PM</li>
+                            <li>Followed by Dinner</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Nikaah -->
+                <div class="modern-card card-main scroll-reveal slide-up">
+                    <div class="card-date">
+                        <span class="day">06</span>
+                        <span class="month">DEC</span>
+                    </div>
+                    <div class="card-info">
+                        <div class="badge">Main Event</div>
+                        <h3>Nikaah</h3>
+                        <p class="card-loc">📍 Botad</p>
+                        <ul>
+                            <li>Nikaah Ceremony at 12:00 PM</li>
+                            <li>Followed by Grand Lunch</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Reception -->
+                <div class="modern-card scroll-reveal slide-left">
+                    <div class="card-date">
+                        <span class="day">07</span>
+                        <span class="month">DEC</span>
+                    </div>
+                    <div class="card-info">
+                        <h3>Reception</h3>
+                        <p class="card-loc">📍 Surat</p>
+                        <ul>
+                            <li>Reception at 8:00 PM onwards</li>
+                            <li>Followed by Dinner</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Venue Section -->
+    <section class="venues section-pad">
+        <div class="container">
+            <h2 class="section-title text-center scroll-reveal fade-up">Locations</h2>
+            
+            <div class="venue-flex">
+                <div class="venue-box scroll-reveal fade-up" style="transition-delay: 0.1s;">
+                    <div class="v-icon">✨</div>
+                    <h3>Surat</h3>
+                    <p>Mehendi (Dec 4) <br> Reception (Dec 7)</p>
+                </div>
+                
+                <div class="venue-box scroll-reveal fade-up" style="transition-delay: 0.3s;">
+                    <div class="v-icon">🕌</div>
+                    <h3>Botad</h3>
+                    <p>Haldi & Sangeet (Dec 5) <br> Nikaah (Dec 6)</p>
+                </div>
+                
+                <div class="venue-box scroll-reveal fade-up" style="transition-delay: 0.5s;">
+                    <div class="v-icon">🛏️</div>
+                    <h3>Accommodation</h3>
+                    <p>Details for out-of-town guests will be provided personally.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countdown & Footer -->
+    <section class="footer-area section-pad text-center">
+        <div class="container">
+            <div class="countdown-wrap scroll-reveal fade-up">
+                <h2 class="section-title">The Countdown Begins</h2>
+                <div id="countdown" class="countdown-timer">
+                    <div class="cd-box"><span id="days">00</span><p>Days</p></div>
+                    <div class="cd-box"><span id="hours">00</span><p>Hours</p></div>
+                    <div class="cd-box"><span id="mins">00</span><p>Mins</p></div>
+                    <div class="cd-box"><span id="secs">00</span><p>Secs</p></div>
+                </div>
+            </div>
+            
+            <h1 class="footer-names scroll-reveal fade-up">Asim & Femina</h1>
+            <p class="footer-date scroll-reveal fade-up">December 4-7, 2026</p>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

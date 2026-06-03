@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asim & Femina | A Cinematic Story</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Great+Vibes&family=Marcellus&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Cinematic Loader -->
+    <div id="loader" class="cinematic-loader">
+        <div class="loader-ring"></div>
+        <div class="loader-text-wrapper">
+            <span class="loader-text">CHAPTER I</span>
+        </div>
+    </div>
+
+    <!-- Spotlight Cursor Effect -->
+    <div class="spotlight"></div>
+
+    <!-- Audio Player Toggle -->
+    <div class="audio-control fade-text delay-5" id="audio-btn">
+        <span class="audio-icon">♪</span>
+        <span class="audio-text">Play Audio</span>
+    </div>
+    <audio id="bg-music" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <main class="smooth-scroll-wrapper">
+        
+        <!-- Hero Story Sequence -->
+        <section class="hero-sequence">
+            <div class="hero-bg parallax-element" data-speed="0.5"></div>
+            <div class="vignette"></div>
+            
+            <div class="hero-content">
+                <p class="fade-text delay-1">In the name of love</p>
+                <div class="title-container">
+                    <h1 class="main-title split-text">
+                        <span>A</span><span>S</span><span>I</span><span>M</span>
+                    </h1>
+                    <span class="ampersand delay-3">&</span>
+                    <h1 class="main-title split-text">
+                        <span>F</span><span>E</span><span>M</span><span>I</span><span>N</span><span>A</span>
+                    </h1>
+                </div>
+                <div class="hero-footer fade-text delay-4">
+                    <span>Dec 04 — 07</span>
+                    <div class="separator-line"></div>
+                    <span>Surat / Botad</span>
+                </div>
+            </div>
+            
+            <div class="scroll-indicator fade-text delay-5">
+                <p>Scroll to uncover</p>
+                <div class="mouse"></div>
+            </div>
+        </section>
+
+        <!-- Get to Know Us -->
+        <section class="get-to-know-cinematic">
+            <div class="container text-center">
+                <h2 class="section-heading reveal-up">The Couple</h2>
+                <div class="cinematic-profiles">
+                    <div class="c-profile reveal-slide-right">
+                        <div class="c-profile-img"></div>
+                        <h3 class="text-gold">Asim</h3>
+                        <p>The Groom</p>
+                    </div>
+                    <div class="c-profile reveal-slide-left">
+                        <div class="c-profile-img"></div>
+                        <h3 class="text-gold">Femina</h3>
+                        <p>The Bride</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Story Timeline -->
+        <section class="our-story-section">
+            <div class="container text-center">
+                <h2 class="section-heading reveal-up">Our Story</h2>
+                <div class="story-grid">
+                    <div class="story-item reveal-slide-right">
+                        <div class="story-img photo-1"></div>
+                        <h3 class="text-gold">The First Meeting</h3>
+                        <p>It started with a simple hello, and our worlds collided in the best way possible.</p>
+                    </div>
+                    <div class="story-item reveal-up" style="transition-delay: 0.2s">
+                        <div class="story-img photo-2"></div>
+                        <h3 class="text-gold">The Proposal</h3>
+                        <p>Under a sky full of stars, a question was asked and a forever was promised.</p>
+                    </div>
+                    <div class="story-item reveal-slide-left" style="transition-delay: 0.4s">
+                        <div class="story-img photo-3"></div>
+                        <h3 class="text-gold">The Journey Ahead</h3>
+                        <p>Two families uniting, ready to celebrate a lifetime of love and happiness.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Moments (Cinematic Morphing Grid) -->
+        <section class="gallery-section">
+            <div class="container text-center">
+                <h2 class="section-heading reveal-up">Our Moments</h2>
+                <div class="gallery-grid">
+                    <div class="g-img reveal-scale" style="background-image: url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80');"></div>
+                    <div class="g-img reveal-scale" style="transition-delay: 0.1s; background-image: url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80');"></div>
+                    <div class="g-img reveal-scale" style="transition-delay: 0.2s; background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80');"></div>
+                    <div class="g-img reveal-scale" style="transition-delay: 0.3s; background-image: url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&q=80');"></div>
+                    <div class="g-img reveal-scale" style="transition-delay: 0.4s; background-image: url('https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&q=80');"></div>
+                    <div class="g-img reveal-scale" style="transition-delay: 0.5s; background-image: url('https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&q=80');"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Verse -->
+        <section class="verse-section">
+            <div class="container text-center">
+                <svg class="ornament reveal-scale" viewBox="0 0 100 20" width="100">
+                    <path d="M0,10 Q25,0 50,10 Q75,20 100,10" fill="none" stroke="#d4af37" stroke-width="1"/>
+                    <circle cx="50" cy="10" r="3" fill="#d4af37"/>
+                </svg>
+                <h2 class="quran-verse reveal-fade">
+                    "And among His signs is that He created for you mates from among yourselves, that you may dwell in tranquility with them..."
+                </h2>
+                <p class="verse-ref reveal-up">— Quran 30:21</p>
+            </div>
+        </section>
+
+        <!-- Events (Cinematic Timeline) -->
+        <section class="events-cinematic">
+            <div class="container">
+                <h2 class="section-heading reveal-up">The Celebration</h2>
+                
+                <div class="timeline-container">
+                    <div class="timeline-line"></div>
+                    
+                    <!-- Mehendi -->
+                    <div class="timeline-block">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content reveal-slide-right">
+                            <div class="event-meta">
+                                <span class="event-day">04</span>
+                                <span class="event-month">DEC</span>
+                            </div>
+                            <div class="event-details-card">
+                                <h3>Mehendi</h3>
+                                <p class="loc">📍 Surat</p>
+                                <p class="desc">Mehendi Ceremony • Lunch & Dinner • Depart for Botad</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Haldi -->
+                    <div class="timeline-block right">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content reveal-slide-left">
+                            <div class="event-meta">
+                                <span class="event-day">05</span>
+                                <span class="event-month">DEC</span>
+                            </div>
+                            <div class="event-details-card">
+                                <h3>Haldi</h3>
+                                <p class="loc">📍 Botad</p>
+                                <p class="desc">Haldi Ceremony at 12:00 PM • Followed by Lunch</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sangeet -->
+                    <div class="timeline-block">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content reveal-slide-right">
+                            <div class="event-meta">
+                                <span class="event-day">05</span>
+                                <span class="event-month">DEC</span>
+                            </div>
+                            <div class="event-details-card">
+                                <h3>Sangeet</h3>
+                                <p class="loc">📍 Botad</p>
+                                <p class="desc">Sangeet Night at 8:00 PM • Followed by Dinner</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Nikaah -->
+                    <div class="timeline-block right main-event-block">
+                        <div class="timeline-marker main-marker"></div>
+                        <div class="timeline-content reveal-slide-left">
+                            <div class="event-meta">
+                                <span class="event-day text-gold">06</span>
+                                <span class="event-month text-gold">DEC</span>
+                            </div>
+                            <div class="event-details-card main-card">
+                                <div class="gold-border"></div>
+                                <h3>Nikaah</h3>
+                                <p class="loc">📍 Botad</p>
+                                <p class="desc">Nikaah Ceremony at 12:00 PM • Grand Lunch</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reception -->
+                    <div class="timeline-block">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content reveal-slide-right">
+                            <div class="event-meta">
+                                <span class="event-day">07</span>
+                                <span class="event-month">DEC</span>
+                            </div>
+                            <div class="event-details-card">
+                                <h3>Reception</h3>
+                                <p class="loc">📍 Surat</p>
+                                <p class="desc">Reception at 8:00 PM • Followed by Dinner</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Venues Mask Reveal -->
+        <section class="venues-mask">
+            <div class="container text-center">
+                <h2 class="section-heading reveal-up">Venues</h2>
+                <div class="venues-grid">
+                    <div class="v-card reveal-up" style="transition-delay: 0s;">
+                        <h3>Surat</h3>
+                        <p>Mehendi • Reception</p>
+                    </div>
+                    <div class="v-card reveal-up" style="transition-delay: 0.2s;">
+                        <h3>Botad</h3>
+                        <p>Haldi • Sangeet • Nikaah</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <section class="footer-cinematic">
+            <div class="container text-center">
+                <div class="dua-wrapper reveal-scale">
+                    <p class="arabic">بارك الله لكما وبارك عليكما وجمع بينكما في خير</p>
+                </div>
+                <h1 class="final-names reveal-up">Asim & Femina</h1>
+                <p class="final-date reveal-up">The Beginning.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Expanded Photo Overlay for Morphing Grid -->
+    <div id="photo-overlay" class="photo-overlay">
+        <div class="photo-overlay-backdrop"></div>
+        <div class="expanded-photo-container">
+            <div id="expanded-photo" class="expanded-photo"></div>
+            <button id="close-photo-btn" class="close-btn">&times;</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

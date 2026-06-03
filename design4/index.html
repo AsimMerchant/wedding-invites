@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Join us in celebrating the wedding of Asim & Femina. December 4-7, 2026.">
+    <title>Asim & Femina | A Botanical Wedding Celebration</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Jost:ital,wght@0,300;0,400;0,500;1,300&family=Monsieur+La+Doulaise&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Loading Overlay -->
+    <div id="loader" class="loader-wrapper">
+        <div class="loader-content">
+            <svg class="leaf-loader" viewBox="0 0 100 100">
+                <path d="M50,10 C30,30 20,50 50,90 C80,50 70,30 50,10 Z" stroke="#d4af37" fill="none" stroke-width="2"/>
+                <path class="leaf-fill" d="M50,10 C30,30 20,50 50,90 C80,50 70,30 50,10 Z" fill="#d4af37"/>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Falling Leaves Container -->
+    <div id="leaves-container"></div>
+
+    <!-- Audio Control -->
+    <div id="audio-control" class="audio-toggle reveal-fade">
+        <span class="music-icon">♫</span>
+        <span class="music-text">Play Music</span>
+    </div>
+    <audio id="bg-music" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-bg-accent"></div>
+        <div class="hero-content">
+            <p class="pre-title reveal-text">Together with our families, we invite you to our wedding</p>
+            <div class="couple-names-wrapper">
+                <h1 class="couple-names">
+                    <span class="name reveal-slide-left">Asim</span>
+                    <span class="ampersand reveal-fade">&</span>
+                    <span class="name reveal-slide-right">Femina</span>
+                </h1>
+            </div>
+            <p class="wedding-dates reveal-fade-up" style="transition-delay: 0.6s;">December 4 — 7, 2026</p>
+            <p class="wedding-locations reveal-fade-up" style="transition-delay: 0.8s;">Surat & Botad</p>
+        </div>
+        <div class="scroll-down reveal-fade">
+            <p>Begin the Journey</p>
+            <div class="mouse-icon"></div>
+        </div>
+    </section>
+
+    <!-- Get to Know Us -->
+    <section class="get-to-know section-padding">
+        <div class="container text-center">
+            <h2 class="section-title reveal-fade-up">Get to Know Us</h2>
+            <div class="couple-profiles">
+                <div class="profile-card reveal-slide-left">
+                    <div class="profile-img groom-img"></div>
+                    <h3>Asim</h3>
+                    <p class="profile-role">The Groom</p>
+                </div>
+                <div class="profile-card reveal-slide-right">
+                    <div class="profile-img bride-img"></div>
+                    <h3>Femina</h3>
+                    <p class="profile-role">The Bride</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story / Intro -->
+    <section class="story-timeline section-padding">
+        <div class="container text-center">
+            <svg class="decorative-icon reveal-fade-up" viewBox="0 0 50 50" width="50" height="50">
+                <path d="M25,0 C25,25 0,25 0,25 C0,25 25,25 25,50 C25,25 50,25 50,25 C50,25 25,25 25,0 Z" fill="#d4af37"/>
+            </svg>
+            <h2 class="section-title reveal-fade-up">Our Story</h2>
+            
+            <div class="story-grid">
+                <div class="story-card reveal-slide-up">
+                    <div class="story-card-inner">
+                        <div class="story-ph"></div>
+                        <h3>The First Meeting</h3>
+                        <p>It started with a simple hello, and our worlds collided in the best way possible.</p>
+                    </div>
+                </div>
+                <div class="story-card reveal-slide-up" style="transition-delay: 0.2s">
+                    <div class="story-card-inner">
+                        <div class="story-ph"></div>
+                        <h3>The Proposal</h3>
+                        <p>Under a sky full of stars, a question was asked and a forever was promised.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Moments (Photo Gallery) -->
+    <section class="gallery section-padding">
+        <div class="container text-center">
+            <h2 class="section-title reveal-fade-up">Our Moments</h2>
+            <div class="accordion-gallery reveal-fade-up">
+                <div class="accordion-item active" style="background-image: url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=800');"><span>The Proposal</span></div>
+                <div class="accordion-item" style="background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=800');"><span>Engagement</span></div>
+                <div class="accordion-item" style="background-image: url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&q=80&w=800');"><span>First Date</span></div>
+                <div class="accordion-item" style="background-image: url('https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&q=80&w=800');"><span>Memories</span></div>
+                <div class="accordion-item" style="background-image: url('https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&q=80&w=800');"><span>Forever</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quran Verse -->
+    <section class="intro section-padding dark-bg">
+        <div class="container text-center">
+            <h2 class="section-title reveal-fade-up">Two Souls, One Path</h2>
+            <div class="quran-verse reveal-fade-up" style="transition-delay: 0.2s;">
+                <p>"And among His signs is that He created for you mates from among yourselves, that you may dwell in tranquility with them, and He has put love and mercy between your hearts."</p>
+                <span>— Quran 30:21</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events section-padding dark-bg">
+        <div class="container">
+            <h2 class="section-title text-center text-light reveal-fade-up">The Celebrations</h2>
+            
+            <div class="events-grid">
+                <!-- Mehendi -->
+                <div class="event-card reveal-slide-up">
+                    <div class="event-card-inner">
+                        <div class="event-date">Dec 4</div>
+                        <h3 class="event-title">Mehendi</h3>
+                        <p class="event-loc">Surat</p>
+                        <ul class="event-details">
+                            <li>Mehendi Ceremony</li>
+                            <li>Lunch & Dinner</li>
+                            <li>Depart for Botad in the evening</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Haldi -->
+                <div class="event-card reveal-slide-up" style="transition-delay: 0.1s;">
+                    <div class="event-card-inner">
+                        <div class="event-date">Dec 5</div>
+                        <h3 class="event-title">Haldi</h3>
+                        <p class="event-loc">Botad</p>
+                        <ul class="event-details">
+                            <li>Haldi Ceremony at 12:00 PM</li>
+                            <li>Followed by Lunch</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Sangeet -->
+                <div class="event-card reveal-slide-up" style="transition-delay: 0.2s;">
+                    <div class="event-card-inner">
+                        <div class="event-date">Dec 5</div>
+                        <h3 class="event-title">Sangeet</h3>
+                        <p class="event-loc">Botad</p>
+                        <ul class="event-details">
+                            <li>Sangeet Night at 8:00 PM</li>
+                            <li>Followed by Dinner</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Nikaah -->
+                <div class="event-card event-card--main reveal-slide-up" style="transition-delay: 0.3s;">
+                    <div class="event-card-inner">
+                        <div class="main-event-badge">Main Event</div>
+                        <div class="event-date">Dec 6</div>
+                        <h3 class="event-title">Nikaah</h3>
+                        <p class="event-loc">Botad</p>
+                        <ul class="event-details">
+                            <li>Nikaah Ceremony at 12:00 PM</li>
+                            <li>Followed by Grand Lunch</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Reception -->
+                <div class="event-card reveal-slide-up" style="transition-delay: 0.4s;">
+                    <div class="event-card-inner">
+                        <div class="event-date">Dec 7</div>
+                        <h3 class="event-title">Reception</h3>
+                        <p class="event-loc">Surat</p>
+                        <ul class="event-details">
+                            <li>Reception at 8:00 PM onwards</li>
+                            <li>Followed by Dinner</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Parallax -->
+    <section class="gallery-preview section-padding">
+        <div class="parallax-wrapper">
+            <div class="parallax-bg" id="gallery-bg"></div>
+            <div class="container text-center relative z-10">
+                <div class="glass-panel reveal-fade-up">
+                    <h2 class="section-title">A Lifetime of Memories</h2>
+                    <p class="subtitle">We can't wait to capture beautiful moments with you all.</p>
+                    <div class="photo-frames">
+                        <div class="frame frame-1"></div>
+                        <div class="frame frame-2"></div>
+                        <div class="frame frame-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Venues -->
+    <section class="venues section-padding">
+        <div class="container">
+            <h2 class="section-title text-center reveal-fade-up">Venues & Travel</h2>
+            <div class="venue-cards">
+                <div class="v-card reveal-slide-right">
+                    <h3>Surat</h3>
+                    <p>The city of diamonds will host our joyful Mehendi on Dec 4, and the grand Reception on Dec 7.</p>
+                </div>
+                <div class="v-card reveal-fade-up" style="transition-delay: 0.2s;">
+                    <h3>Accommodation</h3>
+                    <p>For our out-of-town guests, stay arrangements will be shared directly. Please reach out to our families.</p>
+                </div>
+                <div class="v-card reveal-slide-left" style="transition-delay: 0.4s;">
+                    <h3>Botad</h3>
+                    <p>The heart of our celebrations. Join us here for Haldi, Sangeet, and the sacred Nikaah ceremony.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP & Footer -->
+    <section class="footer-section section-padding dark-bg text-center">
+        <div class="container">
+            <div class="dua-box reveal-fade-up">
+                <p class="arabic">بارك الله لكما وبارك عليكما وجمع بينكما في خير</p>
+                <p class="translation">"May Allah bless you and shower His blessings upon you, and may He unite you both in goodness."</p>
+            </div>
+            
+            <h2 class="footer-names reveal-fade-up">Asim & Femina</h2>
+            <p class="footer-thanks reveal-fade-up">We look forward to celebrating with you.</p>
+        </div>
+        <div class="organic-shape-bottom"></div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

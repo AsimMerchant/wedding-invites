@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asim & Femina | A Glass Dream</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;600&family=Parisienne&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Dynamic Blob Background -->
+    <div class="blob-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+        <div class="glass-overlay"></div>
+    </div>
+
+    <div class="loader" id="loader">
+        <div class="glass-spinner"></div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container">
+        
+        <!-- Hero -->
+        <section class="hero glass-panel fade-in">
+            <p class="pre-title">You are invited</p>
+            <h1 class="names">Asim <span class="amp">&</span> Femina</h1>
+            <div class="date-badge">December 4 — 7, 2026</div>
+            <p class="location">Surat & Botad</p>
+        </section>
+
+        <!-- Intro -->
+        <section class="intro glass-panel tilt-card fade-in">
+            <h2 class="section-title">Two Hearts, One Journey</h2>
+            <p class="verse">"And among His signs is that He created for you mates from among yourselves, that you may dwell in tranquility with them..."</p>
+            <p class="verse-ref">— Quran 30:21</p>
+        </section>
+
+        <!-- Audio Player -->
+        <div class="audio-glass-btn fade-in" id="audio-btn">
+            <span class="audio-icon">♪</span>
+        </div>
+        <audio id="bg-music" loop>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        </audio>
+
+        <!-- Get to Know Us -->
+        <section class="get-to-know-glass fade-in">
+            <h2 class="section-title text-center" style="color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.2);">Get to Know Us</h2>
+            <div class="glass-grid">
+                <div class="glass-card tilt-card text-center">
+                    <div class="profile-img-glass"></div>
+                    <h3>Asim</h3>
+                    <p style="opacity: 0.8; letter-spacing: 2px;">THE GROOM</p>
+                </div>
+                <div class="glass-card tilt-card text-center">
+                    <div class="profile-img-glass"></div>
+                    <h3>Femina</h3>
+                    <p style="opacity: 0.8; letter-spacing: 2px;">THE BRIDE</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Story -->
+        <section class="our-story fade-in">
+            <h2 class="section-title text-center" style="color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.2);">Our Story</h2>
+            <div class="glass-grid story-grid-custom">
+                <div class="glass-card tilt-card">
+                    <div class="story-img-ph"></div>
+                    <h3>The Meeting</h3>
+                    <p>It started with a simple hello, and our worlds collided in the best way possible.</p>
+                </div>
+                <div class="glass-card tilt-card">
+                    <div class="story-img-ph"></div>
+                    <h3>The Proposal</h3>
+                    <p>Under a sky full of stars, a question was asked and a forever was promised.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Moments (Glass Parallax Layers) -->
+        <section class="gallery-glass fade-in">
+            <h2 class="section-title text-center" style="color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.2);">Our Moments</h2>
+            <div class="parallax-glass-container">
+                <div class="parallax-column fast-col">
+                    <div class="glass-card gallery-ph photo-1"><span>Photo 1</span></div>
+                    <div class="glass-card gallery-ph photo-4"><span>Photo 4</span></div>
+                </div>
+                <div class="parallax-column slow-col">
+                    <div class="glass-card gallery-ph photo-2"><span>Photo 2</span></div>
+                    <div class="glass-card gallery-ph photo-5"><span>Photo 5</span></div>
+                </div>
+                <div class="parallax-column med-col">
+                    <div class="glass-card gallery-ph photo-3"><span>Photo 3</span></div>
+                    <div class="glass-card gallery-ph photo-6"><span>Photo 6</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Grid (Neumorphic Glass) -->
+        <section class="events fade-in">
+            <h2 class="section-title text-center" style="color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.2);">The Celebrations</h2>
+            
+            <div class="glass-grid">
+                <!-- Mehendi -->
+                <div class="glass-card tilt-card">
+                    <div class="card-icon">🌿</div>
+                    <h3>Mehendi</h3>
+                    <div class="card-meta">Dec 4 • Surat</div>
+                    <ul>
+                        <li>Mehendi Ceremony</li>
+                        <li>Lunch & Dinner</li>
+                        <li>Depart for Botad</li>
+                    </ul>
+                </div>
+
+                <!-- Haldi -->
+                <div class="glass-card tilt-card">
+                    <div class="card-icon">✨</div>
+                    <h3>Haldi</h3>
+                    <div class="card-meta">Dec 5 • 12 PM • Botad</div>
+                    <ul>
+                        <li>Haldi Ceremony</li>
+                        <li>Followed by Lunch</li>
+                    </ul>
+                </div>
+
+                <!-- Sangeet -->
+                <div class="glass-card tilt-card">
+                    <div class="card-icon">🎶</div>
+                    <h3>Sangeet</h3>
+                    <div class="card-meta">Dec 5 • 8 PM • Botad</div>
+                    <ul>
+                        <li>Sangeet Night</li>
+                        <li>Followed by Dinner</li>
+                    </ul>
+                </div>
+
+                <!-- Nikaah -->
+                <div class="glass-card tilt-card main-card">
+                    <div class="card-badge">Main Event</div>
+                    <div class="card-icon">💍</div>
+                    <h3>Nikaah</h3>
+                    <div class="card-meta">Dec 6 • 12 PM • Botad</div>
+                    <ul>
+                        <li>Nikaah Ceremony</li>
+                        <li>Grand Lunch</li>
+                    </ul>
+                </div>
+
+                <!-- Reception -->
+                <div class="glass-card tilt-card">
+                    <div class="card-icon">🥂</div>
+                    <h3>Reception</h3>
+                    <div class="card-meta">Dec 7 • 8 PM • Surat</div>
+                    <ul>
+                        <li>Reception Evening</li>
+                        <li>Followed by Dinner</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Venues -->
+        <section class="venues glass-panel fade-in">
+            <h2 class="section-title text-center">Locations</h2>
+            <div class="venue-flex">
+                <div class="v-col">
+                    <h3>Surat</h3>
+                    <p>Mehendi • Reception</p>
+                </div>
+                <div class="v-col divider"></div>
+                <div class="v-col">
+                    <h3>Botad</h3>
+                    <p>Haldi • Sangeet • Nikaah</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <section class="footer text-center fade-in">
+            <div class="dua glass-panel tilt-card">
+                <p class="arabic">بارك الله لكما وبارك عليكما وجمع بينكما في خير</p>
+            </div>
+            <h2 class="footer-names">A & F</h2>
+        </section>
+
+    </main>
+
+    <!-- Vanilla Tilt JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

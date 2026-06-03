@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="You are cordially invited to the wedding celebration of Asim & Femina — December 4-7, 2026">
+    <title>Asim & Femina — Wedding Invitation</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="loading-content">
+            <div class="loading-ornament">
+                <svg viewBox="0 0 100 100" class="loading-ring">
+                    <circle cx="50" cy="50" r="40" stroke="rgba(201,168,76,0.3)" fill="none" stroke-width="1"/>
+                    <circle cx="50" cy="50" r="40" stroke="#c9a84c" fill="none" stroke-width="1.5" stroke-dasharray="60 200" class="loading-ring-animated"/>
+                </svg>
+            </div>
+            <p class="loading-text">A & F</p>
+        </div>
+    </div>
+
+    <!-- Floating Petals Container -->
+    <div id="petals-container" aria-hidden="true"></div>
+
+    <!-- ============================================ -->
+    <!-- SECTION 1: HERO — Grand Entrance -->
+    <!-- ============================================ -->
+    <section id="hero" class="section hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-pattern"></div>
+        <div class="hero-content">
+            <div class="hero-ornament-top animate-on-scroll fade-in-down" data-delay="0">
+                <svg viewBox="0 0 200 30" class="ornament-svg">
+                    <path d="M0,15 Q50,0 100,15 Q150,30 200,15" stroke="currentColor" fill="none" stroke-width="1"/>
+                    <circle cx="100" cy="15" r="4" fill="currentColor"/>
+                    <circle cx="60" cy="8" r="2" fill="currentColor"/>
+                    <circle cx="140" cy="22" r="2" fill="currentColor"/>
+                </svg>
+            </div>
+
+            <p class="hero-subtitle animate-on-scroll fade-in" data-delay="200">Together with their families</p>
+
+            <div class="couple-names animate-on-scroll scale-in" data-delay="400">
+                <span class="name name-groom">Asim</span>
+                <span class="name-ampersand">&</span>
+                <span class="name name-bride">Femina</span>
+            </div>
+
+            <p class="hero-tagline animate-on-scroll fade-in" data-delay="600">Request the honour of your presence at their wedding celebration</p>
+
+            <div class="hero-date animate-on-scroll fade-in-up" data-delay="800">
+                <div class="date-line"></div>
+                <span>December 4 — 7, 2026</span>
+                <div class="date-line"></div>
+            </div>
+
+            <div class="hero-ornament-bottom animate-on-scroll fade-in-up" data-delay="1000">
+                <svg viewBox="0 0 200 30" class="ornament-svg">
+                    <path d="M0,15 Q50,30 100,15 Q150,0 200,15" stroke="currentColor" fill="none" stroke-width="1"/>
+                    <circle cx="100" cy="15" r="4" fill="currentColor"/>
+                    <circle cx="60" cy="22" r="2" fill="currentColor"/>
+                    <circle cx="140" cy="8" r="2" fill="currentColor"/>
+                </svg>
+            </div>
+        </div>
+
+        <div class="scroll-indicator animate-on-scroll fade-in" data-delay="1400">
+            <span>Scroll Down</span>
+            <div class="scroll-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14M5 12l7 7 7-7"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 2: THE COUPLE -->
+    <!-- ============================================ -->
+    <section id="couple" class="section couple-section">
+        <div class="section-bg-pattern"></div>
+        <div class="container">
+            <div class="section-header">
+                <div class="ornament-divider animate-on-scroll fade-in">✦</div>
+                <h2 class="section-title animate-on-scroll fade-in-up">Get to Know Us</h2>
+                <p class="section-subtitle animate-on-scroll fade-in-up" data-delay="200">Two hearts, one beautiful journey</p>
+            </div>
+
+            <div class="couple-cards">
+                <!-- Groom -->
+                <div class="couple-card animate-on-scroll fade-in-left" data-delay="200">
+                    <div class="couple-photo-frame">
+                        <div class="couple-photo-placeholder groom-placeholder">
+                            <span class="photo-initial">A</span>
+                            <span class="photo-upload-hint">Photo coming soon</span>
+                        </div>
+                        <div class="photo-frame-border"></div>
+                    </div>
+                    <h3 class="couple-card-name">Asim</h3>
+                    <p class="couple-card-role">The Groom</p>
+                    <p class="couple-card-desc">A soul full of kindness, ambition, and an infectious smile. He brings warmth to every room and love to every heart he touches.</p>
+                </div>
+
+                <!-- Heart connector -->
+                <div class="couple-heart animate-on-scroll scale-in" data-delay="400">
+                    <svg viewBox="0 0 50 50" class="heart-svg">
+                        <path d="M25,45 L5,25 C-2,18 -2,8 5,3 C12,-2 20,2 25,10 C30,2 38,-2 45,3 C52,8 52,18 45,25 Z" fill="currentColor"/>
+                    </svg>
+                </div>
+
+                <!-- Bride -->
+                <div class="couple-card animate-on-scroll fade-in-right" data-delay="200">
+                    <div class="couple-photo-frame">
+                        <div class="couple-photo-placeholder bride-placeholder">
+                            <span class="photo-initial">F</span>
+                            <span class="photo-upload-hint">Photo coming soon</span>
+                        </div>
+                        <div class="photo-frame-border"></div>
+                    </div>
+                    <h3 class="couple-card-name">Femina</h3>
+                    <p class="couple-card-role">The Bride</p>
+                    <p class="couple-card-desc">A spirit of grace, intelligence, and radiant beauty. Her laughter is like music and her love, an endless ocean of tenderness.</p>
+                </div>
+            </div>
+
+            <div class="couple-quote animate-on-scroll fade-in-up" data-delay="400">
+                <blockquote>
+                    "And among His signs is that He created for you mates from among yourselves, that you may dwell in tranquility with them, and He has put love and mercy between your hearts."
+                    <cite>— Quran 30:21</cite>
+                </blockquote>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 3: WEDDING EVENTS TIMELINE -->
+    <!-- ============================================ -->
+    <section id="events" class="section events-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="ornament-divider animate-on-scroll fade-in">✦</div>
+                <h2 class="section-title animate-on-scroll fade-in-up">Wedding Celebrations</h2>
+                <p class="section-subtitle animate-on-scroll fade-in-up" data-delay="200">Join us for a beautiful series of celebrations</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-line"></div>
+
+                <!-- Event 1: Mehendi -->
+                <div class="timeline-event animate-on-scroll fade-in-left" data-delay="100">
+                    <div class="timeline-dot">
+                        <div class="timeline-dot-inner"></div>
+                    </div>
+                    <div class="event-card">
+                        <div class="event-icon">🌿</div>
+                        <div class="event-date-badge">December 4, 2026 · Surat</div>
+                        <h3 class="event-name">Mehendi</h3>
+                        <p class="event-details">An afternoon of beautiful henna artistry, celebrating the intricate patterns of love and joy.</p>
+                        <div class="event-schedule">
+                            <div class="schedule-item">
+                                <span class="schedule-icon">🎨</span>
+                                <span>Mehendi Ceremony</span>
+                            </div>
+                            <div class="schedule-item">
+                                <span class="schedule-icon">🍽️</span>
+                                <span>Lunch & Dinner</span>
+                            </div>
+                            <div class="schedule-item">
+                                <span class="schedule-icon">🚗</span>
+                                <span>Depart for Botad in the evening</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 2: Haldi -->
+                <div class="timeline-event timeline-event-right animate-on-scroll fade-in-right" data-delay="100">
+                    <div class="timeline-dot">
+                        <div class="timeline-dot-inner"></div>
+                    </div>
+                    <div class="event-card">
+                        <div class="event-icon">✨</div>
+                        <div class="event-date-badge">December 5, 2026 · 12:00 PM · Botad</div>
+                        <h3 class="event-name">Haldi</h3>
+                        <p class="event-details">A vibrant and auspicious ceremony where turmeric blesses the couple with radiance and prosperity.</p>
+                        <div class="event-schedule">
+                            <div class="schedule-item">
+                                <span class="schedule-icon">🌼</span>
+                                <span>Haldi Ceremony at 12:00 PM</span>
+                            </div>
+                            <div class="schedule-item">
+                                <span class="schedule-icon">🍽️</span>
+                                <span>Followed by Lunch</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 3: Sangeet -->
+                <div class="timeline-event animate-on-scroll fade-in-left" data-delay="100">
+                    <div class="timeline-dot">
+                        <div class="timeline-dot-inner"></div>
+                    </div>
+                    <div class="event-card">
+                        <div class="event-icon">🎶</div>
+                        <div class="event-date-badge">December 5, 2026 · 8:00 PM · Botad</div>
+                        <h3 class="event-name">Sangeet</h3>
+                        <p class="event-details">An enchanting evening of music, dance, and celebration — where family and friends create unforgettable memories together.</p>
+                        <div class="event-schedule">
+                            <div class="schedule-item">
+                                <span class="schedule-icon">💃</span>
+                                <span>Sangeet Night at 8:00 PM</span>
+                            </div>
+                            <div class="schedule-item">
+                                <span class="schedule-icon">🍽️</span>
+                                <span>Followed by Dinner</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 4: Nikaah -->
+                <div class="timeline-event timeline-event-right animate-on-scroll fade-in-right" data-delay="100">
+                    <div class="timeline-dot nikaah-dot">
+                        <div class="timeline-dot-inner"></div>
+                    </div>
+                    <div class="event-card nikaah-card">
+                        <div class="event-icon">💍</div>
+                        <div class="event-date-badge nikaah-badge">December 6, 2026 · 12:00 PM · Botad</div>
+                        <h3 class="event-name">Nikaah</h3>
+                        <p class="event-details">The sacred union — where two souls become one in the sight of Allah, bound by love, faith, and the blessing of family.</p>
+                        <div class="event-schedule">
+                            <div class="schedule-item">
+                                <span class="schedule-icon">🕌</span>
+                                <span>Nikaah Ceremony at 12:00 PM</span>
+                            </div>
+                            <div class="schedule-item">
+                                <span class="schedule-icon">🍽️</span>
+                                <span>Followed by Grand Lunch</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 5: Reception -->
+                <div class="timeline-event animate-on-scroll fade-in-left" data-delay="100">
+                    <div class="timeline-dot reception-dot">
+                        <div class="timeline-dot-inner"></div>
+                    </div>
+                    <div class="event-card reception-card">
+                        <div class="event-icon">🎉</div>
+                        <div class="event-date-badge reception-badge">December 7, 2026 · 8:00 PM · Surat</div>
+                        <h3 class="event-name">Reception</h3>
+                        <p class="event-details">A grand evening of celebration — join us as we begin our new journey together surrounded by the love and blessings of our dearest family and friends.</p>
+                        <div class="event-schedule">
+                            <div class="schedule-item">
+                                <span class="schedule-icon">🥂</span>
+                                <span>Reception at 8:00 PM onwards</span>
+                            </div>
+                            <div class="schedule-item">
+                                <span class="schedule-icon">🍽️</span>
+                                <span>Followed by Dinner</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 4: PHOTO GALLERY -->
+    <!-- ============================================ -->
+    <section id="gallery" class="section gallery-section">
+        <div class="section-bg-pattern"></div>
+        <div class="container">
+            <div class="section-header">
+                <div class="ornament-divider animate-on-scroll fade-in">✦</div>
+                <h2 class="section-title animate-on-scroll fade-in-up">Our Moments</h2>
+                <p class="section-subtitle animate-on-scroll fade-in-up" data-delay="200">A glimpse into our beautiful journey together</p>
+            </div>
+        </div>
+
+        <div class="gallery-reel">
+            <div class="gallery-item gallery-item-large animate-on-scroll fade-in-up" data-delay="100">
+                <div class="gallery-placeholder">
+                    <div class="gallery-placeholder-icon">📸</div>
+                    <span>Photo 1</span>
+                </div>
+            </div>
+            <div class="gallery-item animate-on-scroll fade-in-up" data-delay="200">
+                <div class="gallery-placeholder">
+                    <div class="gallery-placeholder-icon">📸</div>
+                    <span>Photo 2</span>
+                </div>
+            </div>
+            <div class="gallery-item animate-on-scroll fade-in-up" data-delay="300">
+                <div class="gallery-placeholder">
+                    <div class="gallery-placeholder-icon">📸</div>
+                    <span>Photo 3</span>
+                </div>
+            </div>
+            <div class="gallery-item animate-on-scroll fade-in-up" data-delay="400">
+                <div class="gallery-placeholder">
+                    <div class="gallery-placeholder-icon">📸</div>
+                    <span>Photo 4</span>
+                </div>
+            </div>
+            <div class="gallery-item gallery-item-large animate-on-scroll fade-in-up" data-delay="500">
+                <div class="gallery-placeholder">
+                    <div class="gallery-placeholder-icon">📸</div>
+                    <span>Photo 5</span>
+                </div>
+            </div>
+            <div class="gallery-item animate-on-scroll fade-in-up" data-delay="600">
+                <div class="gallery-placeholder">
+                    <div class="gallery-placeholder-icon">📸</div>
+                    <span>Photo 6</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 5: VENUE & TRAVEL -->
+    <!-- ============================================ -->
+    <section id="venue" class="section venue-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="ornament-divider animate-on-scroll fade-in">✦</div>
+                <h2 class="section-title animate-on-scroll fade-in-up">Venue & Travel</h2>
+                <p class="section-subtitle animate-on-scroll fade-in-up" data-delay="200">We look forward to welcoming you</p>
+            </div>
+
+            <div class="venue-cards">
+                <div class="venue-card animate-on-scroll fade-in-left" data-delay="200">
+                    <div class="venue-card-icon">📍</div>
+                    <h3>Surat, Gujarat</h3>
+                    <p>The Mehendi (Dec 4) and Reception (Dec 7) will take place in Surat. The celebrations begin and end in this beautiful city.</p>
+                </div>
+
+                <div class="venue-card animate-on-scroll fade-in-up" data-delay="300">
+                    <div class="venue-card-icon">📍</div>
+                    <h3>Botad, Gujarat</h3>
+                    <p>The Haldi (Dec 5), Sangeet (Dec 5) and Nikaah (Dec 6) ceremonies will take place in Botad. We travel to Botad on the evening of December 4th.</p>
+                </div>
+
+                <div class="venue-card animate-on-scroll fade-in-right" data-delay="400">
+                    <div class="venue-card-icon">🏨</div>
+                    <h3>Accommodation</h3>
+                    <p>Arrangements for guests will be shared closer to the date. Please feel free to reach out to the family for any questions regarding stay and travel.</p>
+                </div>
+            </div>
+
+            <div class="venue-note animate-on-scroll fade-in-up" data-delay="600">
+                <p>✨ More details about the exact venue address, maps, and directions will be shared soon. Stay tuned!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 6: COUNTDOWN -->
+    <!-- ============================================ -->
+    <section id="countdown" class="section countdown-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-pattern"></div>
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title countdown-title animate-on-scroll fade-in-up" style="color: var(--color-cream);">Counting Down to Our Special Day</h2>
+            </div>
+
+            <div class="countdown-timer animate-on-scroll scale-in" data-delay="300">
+                <div class="countdown-unit">
+                    <span class="countdown-number" id="countdown-days">000</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-unit">
+                    <span class="countdown-number" id="countdown-hours">00</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-unit">
+                    <span class="countdown-number" id="countdown-minutes">00</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-unit">
+                    <span class="countdown-number" id="countdown-seconds">00</span>
+                    <span class="countdown-label">Seconds</span>
+                </div>
+            </div>
+
+            <p class="countdown-message animate-on-scroll fade-in-up" data-delay="500" style="color: var(--color-cream);">Until we say "Qubool Hai" 💕</p>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 7: RSVP / CLOSING -->
+    <!-- ============================================ -->
+    <section id="rsvp" class="section rsvp-section">
+        <div class="section-bg-pattern"></div>
+        <div class="container">
+            <div class="section-header">
+                <div class="ornament-divider animate-on-scroll fade-in">✦</div>
+                <h2 class="section-title animate-on-scroll fade-in-up">You're Invited!</h2>
+            </div>
+
+            <div class="rsvp-content animate-on-scroll fade-in-up" data-delay="200">
+                <p class="rsvp-message">We would be truly honoured to have you celebrate this special occasion with us. Your presence will make our joy complete.</p>
+
+                <div class="rsvp-dua">
+                    <p class="dua-arabic">بارك الله لكما وبارك عليكما وجمع بينكما في خير</p>
+                    <p class="dua-translation">"May Allah bless you and shower His blessings upon you, and may He unite you both in goodness."</p>
+                </div>
+
+                <div class="rsvp-contact">
+                    <p>For any queries, please feel free to reach out to the family</p>
+                </div>
+            </div>
+
+            <footer class="wedding-footer animate-on-scroll fade-in" data-delay="400">
+                <div class="footer-names">Asim & Femina</div>
+                <p class="footer-date">December 4 — 7, 2026</p>
+                <div class="footer-ornament">
+                    <svg viewBox="0 0 120 20" class="ornament-svg small">
+                        <path d="M0,10 Q30,0 60,10 Q90,20 120,10" stroke="currentColor" fill="none" stroke-width="1"/>
+                        <circle cx="60" cy="10" r="3" fill="currentColor"/>
+                    </svg>
+                </div>
+                <p class="footer-credit">Made with ❤️</p>
+            </footer>
+        </div>
+    </section>
+
+    <!-- Background Music Toggle (optional) -->
+    <button id="music-toggle" class="music-toggle" aria-label="Toggle music" title="Toggle background music">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="music-icon-on">
+            <path d="M9 18V5l12-2v13"/>
+            <circle cx="6" cy="18" r="3"/>
+            <circle cx="18" cy="16" r="3"/>
+        </svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="music-icon-off" style="display:none;">
+            <path d="M9 18V5l12-2v13"/>
+            <circle cx="6" cy="18" r="3"/>
+            <circle cx="18" cy="16" r="3"/>
+            <line x1="1" y1="1" x2="23" y2="23" stroke-width="2.5"/>
+        </svg>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>

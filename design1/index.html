@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asim & Femina — Wedding Celebration | December 4–7, 2026</title>
+  <meta name="description" content="You are cordially invited to celebrate the union of Asim & Femina. Join us December 4–7, 2026 in Surat and Botad for a grand celebration of love." />
+  <meta name="keywords" content="Asim, Femina, wedding, invitation, Nikaah, Mehendi, Haldi, Sangeet, Reception, Surat, Botad, December 2026" />
+  <meta name="author" content="Asim & Femina" />
+  <meta property="og:title" content="Asim & Femina — Wedding Celebration" />
+  <meta property="og:description" content="Join us December 4–7, 2026 for our wedding celebrations in Surat & Botad." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#1a1f3a" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Italiana&family=Josefin+Sans:wght@300;400;500;600&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════ LOADING SCREEN ═══════════════ -->
+  <div id="loading-screen" class="loading-screen">
+    <div class="loader-content">
+      <div class="loader-rings">
+        <div class="ring ring-1"></div>
+        <div class="ring ring-2"></div>
+        <div class="ring ring-3"></div>
+      </div>
+      <p class="loader-names">A <span class="loader-ampersand">&amp;</span> F</p>
+      <p class="loader-text">Preparing your invitation…</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════ MUSIC TOGGLE ═══════════════ -->
+  <button id="music-toggle" class="music-toggle" aria-label="Toggle background music">
+    <span class="music-bars">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </span>
+  </button>
+
+  <!-- ═══════════════ PARTICLES CANVAS ═══════════════ -->
+  <canvas id="particles-canvas" class="particles-canvas"></canvas>
+
+  <!-- ═══════════════ 1. HERO SECTION ═══════════════ -->
+  <section id="hero" class="section section--hero">
+    <div class="hero-bg-overlay"></div>
+    <div class="constellation-bg"></div>
+    <div class="hero-content">
+      <p class="hero-subtitle anim-fade-in-up" data-delay="0.3">Together with their families</p>
+      <div class="hero-names anim-fade-in-up" data-delay="0.6">
+        <span class="hero-name">Asim</span>
+        <span class="hero-ampersand shimmer-gold">&amp;</span>
+        <span class="hero-name">Femina</span>
+      </div>
+      <div class="hero-ornament anim-fade-in-up" data-delay="0.9">
+        <span class="ornament-line"></span>
+        <span class="ornament-diamond">◆</span>
+        <span class="ornament-line"></span>
+      </div>
+      <p class="hero-tagline anim-fade-in-up" data-delay="1.0">Request the honour of your presence</p>
+      <p class="hero-date anim-fade-in-up" data-delay="1.2">December 4 – 7, 2026</p>
+      <p class="hero-location anim-fade-in-up" data-delay="1.4">Surat &amp; Botad, Gujarat</p>
+    </div>
+    <div class="scroll-indicator anim-fade-in-up" data-delay="1.8">
+      <span class="scroll-text">Scroll to begin</span>
+      <div class="scroll-arrow">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ QURAN VERSE SECTION ═══════════════ -->
+  <section id="verse" class="section section--verse">
+    <div class="container">
+      <div class="verse-card anim-scale-in">
+        <div class="verse-ornament-top">✦</div>
+        <blockquote class="verse-text">
+          "And among His signs is that He created for you mates from among yourselves, that you may dwell in tranquility with them, and He has put love and mercy between your hearts."
+        </blockquote>
+        <cite class="verse-cite">— Quran 30:21</cite>
+        <div class="verse-ornament-bottom">✦</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ 2. GET TO KNOW US ═══════════════ -->
+  <section id="couple" class="section section--couple">
+    <div class="container">
+      <h2 class="section-title anim-fade-in-up">
+        <span class="title-ornament">✦</span>
+        Get to Know Us
+        <span class="title-ornament">✦</span>
+      </h2>
+      <p class="section-subtitle anim-fade-in-up">Two hearts, one beautiful journey</p>
+
+      <div class="couple-cards">
+        <!-- Groom -->
+        <div class="couple-card anim-fade-in-left">
+          <div class="couple-photo-frame">
+            <div class="photo-placeholder">
+              <svg viewBox="0 0 120 120" width="120" height="120">
+                <circle cx="60" cy="45" r="22" fill="rgba(199,133,122,0.3)" stroke="rgba(199,133,122,0.6)" stroke-width="1.5"/>
+                <path d="M20 105 Q20 75 60 70 Q100 75 100 105" fill="rgba(199,133,122,0.2)" stroke="rgba(199,133,122,0.6)" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div class="photo-ring"></div>
+          </div>
+          <h3 class="couple-name">Asim</h3>
+          <p class="couple-role">The Groom</p>
+          <p class="couple-desc">A dreamer with a heart full of love, ready to begin the most beautiful chapter of his life.</p>
+        </div>
+
+        <!-- Heart -->
+        <div class="couple-heart-container anim-scale-in">
+          <div class="couple-heart heartbeat">
+            <svg viewBox="0 0 64 64" width="64" height="64">
+              <path d="M32 56 C32 56 6 38 6 20 C6 10 14 4 22 4 C28 4 31 8 32 10 C33 8 36 4 42 4 C50 4 58 10 58 20 C58 38 32 56 32 56Z" fill="#c7857a" opacity="0.9"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Bride -->
+        <div class="couple-card anim-fade-in-right">
+          <div class="couple-photo-frame">
+            <div class="photo-placeholder">
+              <svg viewBox="0 0 120 120" width="120" height="120">
+                <circle cx="60" cy="45" r="22" fill="rgba(199,133,122,0.3)" stroke="rgba(199,133,122,0.6)" stroke-width="1.5"/>
+                <path d="M20 105 Q20 75 60 70 Q100 75 100 105" fill="rgba(199,133,122,0.2)" stroke="rgba(199,133,122,0.6)" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div class="photo-ring"></div>
+          </div>
+          <h3 class="couple-name">Femina</h3>
+          <p class="couple-role">The Bride</p>
+          <p class="couple-desc">Graceful and radiant, she brings warmth and joy to every moment they share together.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ 3. WEDDING EVENTS TIMELINE ═══════════════ -->
+  <section id="events" class="section section--events">
+    <div class="container">
+      <h2 class="section-title section-title--light anim-fade-in-up">
+        <span class="title-ornament">✦</span>
+        Wedding Celebrations
+        <span class="title-ornament">✦</span>
+      </h2>
+      <p class="section-subtitle section-subtitle--light anim-fade-in-up">Five days of love, laughter &amp; blessings</p>
+
+      <div class="timeline">
+        <div class="timeline-line" id="timeline-line"></div>
+
+        <!-- Event 1: Mehendi -->
+        <div class="timeline-event anim-fade-in-left" data-event="mehendi">
+          <div class="timeline-dot"></div>
+          <div class="event-card">
+            <div class="event-icon">🌿</div>
+            <span class="event-badge badge--surat">Surat</span>
+            <h3 class="event-name">Mehendi</h3>
+            <p class="event-date">December 4, 2026</p>
+            <div class="event-details">
+              <p>Mehendi Ceremony</p>
+              <p>Lunch &amp; Dinner</p>
+              <p>Depart for Botad in the evening</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Event 2: Haldi -->
+        <div class="timeline-event timeline-event--right anim-fade-in-right" data-event="haldi">
+          <div class="timeline-dot"></div>
+          <div class="event-card">
+            <div class="event-icon">✨</div>
+            <span class="event-badge badge--botad">Botad</span>
+            <h3 class="event-name">Haldi</h3>
+            <p class="event-date">December 5, 2026 · 12:00 PM</p>
+            <div class="event-details">
+              <p>Haldi Ceremony at 12:00 PM</p>
+              <p>Followed by Lunch</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Event 3: Sangeet -->
+        <div class="timeline-event anim-fade-in-left" data-event="sangeet">
+          <div class="timeline-dot"></div>
+          <div class="event-card">
+            <div class="event-icon">🎶</div>
+            <span class="event-badge badge--botad">Botad</span>
+            <h3 class="event-name">Sangeet</h3>
+            <p class="event-date">December 5, 2026 · 8:00 PM</p>
+            <div class="event-details">
+              <p>Sangeet Night at 8:00 PM</p>
+              <p>Followed by Dinner</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Event 4: Nikaah (MAIN EVENT) -->
+        <div class="timeline-event timeline-event--right timeline-event--main anim-fade-in-right" data-event="nikaah">
+          <div class="timeline-dot timeline-dot--main"></div>
+          <div class="event-card event-card--main">
+            <div class="event-main-badge">✦ Main Event ✦</div>
+            <div class="event-icon">🕌</div>
+            <span class="event-badge badge--botad">Botad</span>
+            <h3 class="event-name event-name--main">Nikaah</h3>
+            <p class="event-date">December 6, 2026 · 12:00 PM</p>
+            <div class="event-details">
+              <p>Nikaah Ceremony at 12:00 PM</p>
+              <p>Followed by Grand Lunch</p>
+            </div>
+            <div class="event-card-glow"></div>
+          </div>
+        </div>
+
+        <!-- Event 5: Reception -->
+        <div class="timeline-event anim-fade-in-left" data-event="reception">
+          <div class="timeline-dot"></div>
+          <div class="event-card">
+            <div class="event-icon">🥂</div>
+            <span class="event-badge badge--surat">Surat</span>
+            <h3 class="event-name">Reception</h3>
+            <p class="event-date">December 7, 2026 · 8:00 PM onwards</p>
+            <div class="event-details">
+              <p>Reception at 8:00 PM onwards</p>
+              <p>Followed by Dinner</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ 4. PHOTO GALLERY ═══════════════ -->
+  <section id="gallery" class="section section--gallery">
+    <div class="container">
+      <h2 class="section-title anim-fade-in-up">
+        <span class="title-ornament">✦</span>
+        Our Gallery
+        <span class="title-ornament">✦</span>
+      </h2>
+      <p class="section-subtitle anim-fade-in-up">Moments we treasure</p>
+
+      <div class="gallery-grid">
+        <div class="gallery-item gallery-item--tall anim-watercolor" data-index="1">
+          <div class="gallery-placeholder">
+            <svg viewBox="0 0 80 80" width="48" height="48"><path d="M10 65 L30 40 L45 52 L60 30 L70 45 L70 65Z" fill="rgba(199,133,122,0.3)" stroke="rgba(199,133,122,0.5)" stroke-width="1.5"/><circle cx="55" cy="22" r="8" fill="rgba(199,133,122,0.25)" stroke="rgba(199,133,122,0.5)" stroke-width="1.5"/></svg>
+            <span>Photo 1</span>
+          </div>
+        </div>
+        <div class="gallery-item anim-watercolor" data-index="2">
+          <div class="gallery-placeholder">
+            <svg viewBox="0 0 80 80" width="48" height="48"><path d="M10 65 L30 40 L45 52 L60 30 L70 45 L70 65Z" fill="rgba(199,133,122,0.3)" stroke="rgba(199,133,122,0.5)" stroke-width="1.5"/><circle cx="55" cy="22" r="8" fill="rgba(199,133,122,0.25)" stroke="rgba(199,133,122,0.5)" stroke-width="1.5"/></svg>
+            <span>Photo 2</span>
+          </div>
+        </div>
+        <div class="gallery-item anim-watercolor" data-index="3">
+          <div class="gallery-placeholder">
+            <svg viewBox="0 0 80 80" width="48" height="48"><path d="M10 65 L30 40 L45 52 L60 30 L70 45 L70 65Z" fill="rgba(199,133,122,0.3)" stroke="rgba(199,133,122,0.5)" stroke-width="1.5"/><circle cx="55" cy="22" r="8" fill="rgba(199,133,122,0.25)" stroke="rgba(199,133,122,0.5)" stroke-width="1.5"/></svg>
+            <span>Photo 3</span>
+          </div>
+        </div>
+        <div class="gallery-item gallery-item--wide anim-watercolor" data-index="4">
+          <div class="gallery-placeholder">
+            <svg viewBox="0 0 80 80" width="48" height="48"><path d="M10 65 L30 40 L45 52 L60 30 L70 45 L70 65Z" fill="rgba(199,133,122,0.3)" stroke="rgba(199,133,122,0.5)" stroke-width="1.5"/><circle cx="55" cy="22" r="8" fill="rgba(199,133,122,0.25)" stroke="rgba(199,133,122,0.5)" stroke-width="1.5"/></svg>
+            <span>Photo 4</span>
+          </div>
+        </div>
+        <div class="gallery-item anim-watercolor" data-index="5">
+          <div class="gallery-placeholder">
+            <svg viewBox="0 0 80 80" width="48" height="48"><path d="M10 65 L30 40 L45 52 L60 30 L70 45 L70 65Z" fill="rgba(199,133,122,0.3)" stroke="rgba(199,133,122,0.5)" stroke-width="1.5"/><circle cx="55" cy="22" r="8" fill="rgba(199,133,122,0.25)" stroke="rgba(199,133,122,0.5)" stroke-width="1.5"/></svg>
+            <span>Photo 5</span>
+          </div>
+        </div>
+        <div class="gallery-item anim-watercolor" data-index="6">
+          <div class="gallery-placeholder">
+            <svg viewBox="0 0 80 80" width="48" height="48"><path d="M10 65 L30 40 L45 52 L60 30 L70 45 L70 65Z" fill="rgba(199,133,122,0.3)" stroke="rgba(199,133,122,0.5)" stroke-width="1.5"/><circle cx="55" cy="22" r="8" fill="rgba(199,133,122,0.25)" stroke="rgba(199,133,122,0.5)" stroke-width="1.5"/></svg>
+            <span>Photo 6</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ 5. VENUE & TRAVEL ═══════════════ -->
+  <section id="venue" class="section section--venue">
+    <div class="container">
+      <h2 class="section-title section-title--light anim-fade-in-up">
+        <span class="title-ornament">✦</span>
+        Venue &amp; Travel
+        <span class="title-ornament">✦</span>
+      </h2>
+      <p class="section-subtitle section-subtitle--light anim-fade-in-up">Where our celebrations unfold</p>
+
+      <div class="venue-cards">
+        <div class="venue-card anim-fade-in-up" data-delay="0.1">
+          <div class="venue-card-icon">
+            <svg viewBox="0 0 64 64" width="48" height="48"><path d="M32 4 L32 4 C32 4 52 18 52 32 C52 44 43 52 32 56 C21 52 12 44 12 32 C12 18 32 4 32 4Z" fill="none" stroke="#c7857a" stroke-width="2"/><circle cx="32" cy="28" r="6" fill="none" stroke="#c7857a" stroke-width="2"/></svg>
+          </div>
+          <h3 class="venue-name">Surat</h3>
+          <div class="venue-events-list">
+            <span class="venue-event-tag">Mehendi — Dec 4</span>
+            <span class="venue-event-tag">Reception — Dec 7</span>
+          </div>
+          <p class="venue-desc">The Diamond City welcomes you for the beginning and the grand finale of our celebrations.</p>
+        </div>
+
+        <div class="venue-card anim-fade-in-up" data-delay="0.3">
+          <div class="venue-card-icon">
+            <svg viewBox="0 0 64 64" width="48" height="48"><path d="M32 4 L32 4 C32 4 52 18 52 32 C52 44 43 52 32 56 C21 52 12 44 12 32 C12 18 32 4 32 4Z" fill="none" stroke="#c7857a" stroke-width="2"/><circle cx="32" cy="28" r="6" fill="none" stroke="#c7857a" stroke-width="2"/></svg>
+          </div>
+          <h3 class="venue-name">Botad</h3>
+          <div class="venue-events-list">
+            <span class="venue-event-tag">Haldi — Dec 5</span>
+            <span class="venue-event-tag">Sangeet — Dec 5</span>
+            <span class="venue-event-tag venue-event-tag--main">Nikaah — Dec 6</span>
+          </div>
+          <p class="venue-desc">The heart of our celebrations — where traditions come alive and two souls unite forever.</p>
+        </div>
+
+        <div class="venue-card anim-fade-in-up" data-delay="0.5">
+          <div class="venue-card-icon">
+            <svg viewBox="0 0 64 64" width="48" height="48"><rect x="14" y="20" width="36" height="32" rx="3" fill="none" stroke="#c7857a" stroke-width="2"/><path d="M14 28 L32 16 L50 28" fill="none" stroke="#c7857a" stroke-width="2"/><rect x="26" y="36" width="12" height="16" rx="1" fill="none" stroke="#c7857a" stroke-width="1.5"/></svg>
+          </div>
+          <h3 class="venue-name">Accommodation</h3>
+          <div class="venue-events-list">
+            <span class="venue-event-tag">Arrangements in both cities</span>
+          </div>
+          <p class="venue-desc">Comfortable stay arrangements will be made for all guests. Details to be shared closer to the date.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ 6. COUNTDOWN ═══════════════ -->
+  <section id="countdown" class="section section--countdown">
+    <div class="container">
+      <h2 class="section-title anim-fade-in-up">
+        <span class="title-ornament">✦</span>
+        Counting Down
+        <span class="title-ornament">✦</span>
+      </h2>
+      <p class="section-subtitle anim-fade-in-up">Until we celebrate together</p>
+
+      <div class="countdown-timer anim-scale-in">
+        <div class="countdown-unit">
+          <span class="countdown-number" id="cd-days">000</span>
+          <span class="countdown-label">Days</span>
+        </div>
+        <span class="countdown-sep blink">:</span>
+        <div class="countdown-unit">
+          <span class="countdown-number" id="cd-hours">00</span>
+          <span class="countdown-label">Hours</span>
+        </div>
+        <span class="countdown-sep blink">:</span>
+        <div class="countdown-unit">
+          <span class="countdown-number" id="cd-minutes">00</span>
+          <span class="countdown-label">Minutes</span>
+        </div>
+        <span class="countdown-sep blink">:</span>
+        <div class="countdown-unit">
+          <span class="countdown-number" id="cd-seconds">00</span>
+          <span class="countdown-label">Seconds</span>
+        </div>
+      </div>
+
+      <p class="countdown-date anim-fade-in-up">December 4, 2026</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ 7. RSVP / CLOSING ═══════════════ -->
+  <section id="closing" class="section section--closing">
+    <div class="container">
+      <div class="closing-dua anim-scale-in">
+        <p class="dua-arabic" dir="rtl">بارك الله لكما وبارك عليكما وجمع بينكما في خير</p>
+        <p class="dua-translation">"May Allah bless you both, shower His blessings upon you, and unite you both in goodness."</p>
+      </div>
+
+      <div class="closing-message anim-fade-in-up">
+        <div class="closing-ornament">❦</div>
+        <h2 class="closing-title">With Love &amp; Gratitude</h2>
+        <p class="closing-text">
+          Your presence is the greatest gift we could ask for. We are honoured and overjoyed to share these beautiful moments with you. Join us as we embark on this blessed journey of togetherness.
+        </p>
+        <p class="closing-text">
+          With warm regards and heartfelt prayers,
+        </p>
+        <p class="closing-couple-names">Asim <span class="shimmer-gold">&amp;</span> Femina</p>
+        <p class="closing-family">and both families</p>
+      </div>
+
+      <footer class="site-footer anim-fade-in-up">
+        <div class="footer-ornament">
+          <span class="ornament-line"></span>
+          <span class="ornament-diamond">◆</span>
+          <span class="ornament-line"></span>
+        </div>
+        <p class="footer-text">Made with ♥ for a celebration of love</p>
+        <p class="footer-date">December 4 – 7, 2026 · Surat &amp; Botad</p>
+      </footer>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

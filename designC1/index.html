@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asim & Femina | An Editorial Wedding</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;1,6..96,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="loading">
+
+    <!-- Cinematic Loader -->
+    <div id="loader" class="loader">
+        <div class="loader-track">
+            <div class="loader-progress"></div>
+        </div>
+        <h1 class="loader-title">
+            <span class="char" style="animation-delay: 0.1s">A</span>
+            <span class="char" style="animation-delay: 0.2s">&</span>
+            <span class="char" style="animation-delay: 0.3s">F</span>
+        </h1>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+
+    <!-- Sticky Header -->
+    <header class="header">
+        <div class="logo">A & F</div>
+        <div class="date">Dec 4—7, 2026</div>
+    </header>
+
+    <main data-scroll-container>
+        <!-- Hero Section -->
+        <section class="hero" data-scroll-section>
+            <div class="hero-wrapper">
+                <p class="subtitle reveal-up">The Wedding Celebration of</p>
+                <div class="title-wrapper">
+                    <h1 class="massive-title">
+                        <div class="line-mask"><span class="line-inner">ASIM</span></div>
+                        <div class="line-mask ampersand-wrapper"><span class="line-inner ampersand">&</span></div>
+                        <div class="line-mask"><span class="line-inner">FEMINA</span></div>
+                    </h1>
+                </div>
+                <div class="hero-image-placeholder reveal-scale"></div>
+            </div>
+            <div class="scroll-down">
+                <div class="scroll-line"></div>
+            </div>
+        </section>
+
+        <!-- Audio Toggle -->
+        <div class="audio-toggle" id="audio-btn">
+            <span class="audio-text">Audio</span>
+            <span class="audio-state">Off</span>
+        </div>
+        <audio id="bg-music" loop>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        </audio>
+
+        <!-- Intro -->
+        <section class="intro" data-scroll-section>
+            <div class="container">
+                <h2 class="editorial-text reveal-text">
+                    "And among His signs is that He created for you mates from among yourselves, that you may dwell in tranquility with them, and He has put love and mercy between your hearts."
+                </h2>
+                <p class="author reveal-up">— Quran 30:21</p>
+            </div>
+        </section>
+
+        <!-- Get to Know Us -->
+        <section class="get-to-know-editorial" data-scroll-section>
+            <div class="container">
+                <h2 class="reveal-up">Get to Know Us</h2>
+                <div class="profiles-flex">
+                    <div class="profile-ed reveal-up">
+                        <div class="profile-img-ed"></div>
+                        <h3>Asim</h3>
+                        <p>The Groom</p>
+                    </div>
+                    <div class="profile-ed reveal-up" style="transition-delay: 0.2s">
+                        <div class="profile-img-ed"></div>
+                        <h3>Femina</h3>
+                        <p>The Bride</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Story -->
+        <section class="story-editorial" data-scroll-section>
+            <div class="container">
+                <h2 class="reveal-up">Our Journey</h2>
+                <div class="story-flex">
+                    <div class="story-block reveal-up" style="transition-delay: 0.1s">
+                        <div class="story-img-ph"></div>
+                        <h3>The First Chapter</h3>
+                        <p>It started with a simple hello, and our worlds collided in the best way possible.</p>
+                    </div>
+                    <div class="story-block reveal-up" style="transition-delay: 0.3s">
+                        <div class="story-img-ph"></div>
+                        <h3>The Proposal</h3>
+                        <p>Under a sky full of stars, a question was asked and a forever was promised.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Magazine Story Experience -->
+        <section class="gallery-editorial" data-scroll-section>
+            <div class="container">
+                <h2 class="reveal-up">Moments</h2>
+                <div class="story-avatars-container">
+                    <div class="story-avatar reveal-up" data-story="0">
+                        <div class="story-ring">
+                            <div class="story-img-thumb" style="background-color: #8b3a2b;"></div>
+                        </div>
+                        <span>Engagement</span>
+                    </div>
+                    <div class="story-avatar reveal-up" data-story="1" style="transition-delay: 0.1s">
+                        <div class="story-ring">
+                            <div class="story-img-thumb" style="background-color: #dcdccb;"></div>
+                        </div>
+                        <span>Pre-Wed</span>
+                    </div>
+                    <div class="story-avatar reveal-up" data-story="2" style="transition-delay: 0.2s">
+                        <div class="story-ring">
+                            <div class="story-img-thumb" style="background-color: #a8a89b;"></div>
+                        </div>
+                        <span>Us</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Horizontal Timeline Events -->
+        <section class="events-horizontal" id="horizontal-scroll" data-scroll-section>
+            <div class="sticky-wrapper">
+                <div class="events-header">
+                    <h2 class="reveal-up">The Itinerary</h2>
+                    <p class="reveal-up" style="transition-delay:0.1s">Surat & Botad</p>
+                </div>
+                
+                <div class="horizontal-container">
+                    <!-- Mehendi -->
+                    <div class="h-card">
+                        <div class="h-card-inner">
+                            <span class="h-date">04 Dec</span>
+                            <h3 class="h-title">Mehendi</h3>
+                            <p class="h-loc">Surat</p>
+                            <ul class="h-details">
+                                <li>Mehendi Ceremony</li>
+                                <li>Lunch & Dinner</li>
+                                <li>Depart for Botad</li>
+                            </ul>
+                            <div class="h-img-ph"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Haldi -->
+                    <div class="h-card">
+                        <div class="h-card-inner">
+                            <span class="h-date">05 Dec</span>
+                            <h3 class="h-title">Haldi</h3>
+                            <p class="h-loc">Botad</p>
+                            <ul class="h-details">
+                                <li>Haldi at 12:00 PM</li>
+                                <li>Followed by Lunch</li>
+                            </ul>
+                            <div class="h-img-ph"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Sangeet -->
+                    <div class="h-card">
+                        <div class="h-card-inner">
+                            <span class="h-date">05 Dec</span>
+                            <h3 class="h-title">Sangeet</h3>
+                            <p class="h-loc">Botad</p>
+                            <ul class="h-details">
+                                <li>Sangeet at 8:00 PM</li>
+                                <li>Followed by Dinner</li>
+                            </ul>
+                            <div class="h-img-ph"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Nikaah -->
+                    <div class="h-card h-card-main">
+                        <div class="h-card-inner">
+                            <span class="h-date text-rust">06 Dec</span>
+                            <h3 class="h-title">Nikaah</h3>
+                            <p class="h-loc">Botad</p>
+                            <ul class="h-details">
+                                <li>Ceremony at 12:00 PM</li>
+                                <li>Followed by Grand Lunch</li>
+                            </ul>
+                            <div class="h-img-ph nikaah-img"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Reception -->
+                    <div class="h-card">
+                        <div class="h-card-inner">
+                            <span class="h-date">07 Dec</span>
+                            <h3 class="h-title">Reception</h3>
+                            <p class="h-loc">Surat</p>
+                            <ul class="h-details">
+                                <li>Reception at 8:00 PM</li>
+                                <li>Followed by Dinner</li>
+                            </ul>
+                            <div class="h-img-ph"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Venues Grid -->
+        <section class="venues" data-scroll-section>
+            <div class="container">
+                <h2 class="section-title reveal-up">Locations</h2>
+                <div class="venues-grid">
+                    <div class="venue-item reveal-up">
+                        <div class="v-num">01</div>
+                        <h3>Surat</h3>
+                        <p>Mehendi & Reception</p>
+                    </div>
+                    <div class="venue-item reveal-up" style="transition-delay: 0.1s">
+                        <div class="v-num">02</div>
+                        <h3>Botad</h3>
+                        <p>Haldi, Sangeet & Nikaah</p>
+                    </div>
+                    <div class="venue-item reveal-up" style="transition-delay: 0.2s">
+                        <div class="v-num">03</div>
+                        <h3>Stay</h3>
+                        <p>Accommodation details provided to guests.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <section class="footer" data-scroll-section>
+            <div class="footer-bg"></div>
+            <div class="footer-content">
+                <div class="dua-container reveal-scale">
+                    <p class="arabic">بارك الله لكما وبارك عليكما وجمع بينكما في خير</p>
+                    <p class="english">"May Allah bless you and shower His blessings upon you, and may He unite you both in goodness."</p>
+                </div>
+                
+                <h1 class="massive-title footer-title reveal-up">
+                    Asim & Femina
+                </h1>
+                
+                <div class="footer-bottom">
+                    <span>Dec 2026</span>
+                    <span>Surat & Botad</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Story Overlay -->
+    <div id="story-overlay" class="story-overlay hidden">
+        <div class="story-header">
+            <div class="story-progress-container" id="story-progress-container"></div>
+            <div class="story-header-info">
+                <span class="story-title" id="story-title-display"></span>
+                <button class="story-close" id="story-close">&times;</button>
+            </div>
+        </div>
+        <div class="story-content">
+            <div class="story-img-display" id="story-img-display"></div>
+            <div class="story-tap-left" id="story-tap-left"></div>
+            <div class="story-tap-right" id="story-tap-right"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
