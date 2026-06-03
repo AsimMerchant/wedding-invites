@@ -10,6 +10,8 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
+*, *::before, *::after { box-sizing: inherit; }
+html, body { overflow-x: hidden !important; max-width: 100%; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { font-family: var(--f-sans); background: var(--c-bg); color: var(--c-text); overflow-x: hidden; cursor: none; }
 body.loading { overflow: hidden; }
@@ -89,7 +91,7 @@ a:hover ~ .cursor, .hover-target:hover ~ .cursor { width: 40px; height: 40px; }
 .gallery-editorial { padding: 5vw 3rem 15vw 3rem; background: var(--c-bg); border-top: 1px solid var(--c-text); }
 .gallery-editorial h2 { font-family: var(--f-serif); font-size: 5rem; margin-bottom: 4rem; }
 
-.story-avatars-container { display: flex; gap: 2.5rem; justify-content: center; overflow-x: auto; padding-bottom: 2rem; scrollbar-width: none; }
+.story-avatars-container { display: flex; gap: 2.5rem; justify-content: flex-start; overflow-x: auto; padding-bottom: 2rem; scrollbar-width: none; width: max-content; max-width: 100%; margin: 0 auto; box-sizing: border-box; }
 .story-avatars-container::-webkit-scrollbar { display: none; }
 .story-avatar { display: flex; flex-direction: column; align-items: center; gap: 0.8rem; cursor: pointer; flex-shrink: 0; }
 .story-ring { padding: 4px; border-radius: 50%; background: linear-gradient(45deg, var(--c-accent), #e39e5e); transition: transform 0.3s cubic-bezier(0.77,0,0.175,1); }

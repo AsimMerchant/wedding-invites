@@ -11,7 +11,9 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: var(--f-body); color: var(--c-dark); overflow-x: hidden; background: var(--c-cream); }
+*, *::before, *::after { box-sizing: inherit; }
+html, body { overflow-x: hidden !important; max-width: 100%; box-sizing: border-box; }
+body { font-family: var(--f-body); color: var(--c-dark); background: var(--c-cream); }
 
 /* Dynamic Background */
 .sunset-bg {
@@ -92,8 +94,8 @@ body { font-family: var(--f-body); color: var(--c-dark); overflow-x: hidden; bac
 .quran-quote span { display: block; margin-top: 1rem; font-family: var(--f-body); font-size: 1rem; font-style: normal; font-weight: 500; }
 
 /* Gallery (Swipeable Polaroid Deck) */
-.polaroid-deck { position: relative; width: 300px; height: 380px; margin: 3rem auto 1rem; }
-.polaroid-card { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #fff; padding: 15px; padding-bottom: 20px; border-radius: 5px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); display: flex; flex-direction: column; cursor: grab; user-select: none; transform-origin: 50% 100%; will-change: transform; transition: transform 0.3s ease; }
+.polaroid-deck { position: relative; width: 300px; max-width: 100%; height: 380px; margin: 3rem auto 1rem; perspective: 1000px; transform-style: preserve-3d; }
+.polaroid-card { position: absolute; top: 0; left: 0; right: 0; margin: 0 auto; width: 100%; max-width: 100%; height: 100%; background: #fff; padding: 15px; padding-bottom: 20px; border-radius: 5px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); display: flex; flex-direction: column; cursor: grab; user-select: none; transform-origin: center center; will-change: transform; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); transform-style: preserve-3d; }
 .polaroid-card:active { cursor: grabbing; transition: none; }
 .polaroid-card.swiped { transition: transform 0.6s ease; pointer-events: none; }
 .polaroid-img { flex: 1; background-color: var(--c-sand); background-size: cover; background-position: center; border-radius: 3px; margin-bottom: 15px; pointer-events: none; }

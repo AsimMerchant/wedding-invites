@@ -38,18 +38,23 @@
 }
 
 /* ---- Reset & Base ---- */
+html, body {
+    overflow-x: hidden !important;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
 *,
 *::before,
 *::after {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: inherit;
 }
 
 html {
     scroll-behavior: smooth;
     font-size: 16px;
-    overflow-x: hidden;
 }
 
 body {
@@ -57,7 +62,6 @@ body {
     background-color: var(--color-bg);
     color: var(--color-text);
     line-height: 1.7;
-    overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -752,39 +756,21 @@ img {
     background: var(--color-cream);
 }
 
-.gallery-reel {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 20px;
-    padding: 20px 24px;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE/Edge */
+.swiper-gallery {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 
-.gallery-reel::-webkit-scrollbar {
-    display: none; /* Chrome/Safari */
-}
-
-.gallery-item {
-    flex: 0 0 80%;
-    max-width: 320px;
-    scroll-snap-align: start;
+.swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 300px;
+    height: 400px;
     border-radius: 16px;
     overflow: hidden;
-    aspect-ratio: 4/5;
-    position: relative;
-    transition: transform var(--transition-smooth);
-}
-
-.gallery-item:hover {
-    transform: scale(1.03);
-}
-
-.gallery-item-large {
-    flex: 0 0 90%;
-    max-width: 480px;
-    aspect-ratio: 16/9;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    background: var(--color-cream);
 }
 
 .gallery-placeholder {
@@ -798,29 +784,27 @@ img {
         135deg,
         var(--color-cream-dark) 0%,
         var(--color-accent-light) 50%,
-        var(--color-cream-dark) 100%
+        var(--color-secondary-light) 100%
     );
-    border: 2px dashed var(--color-secondary);
-    border-radius: 16px;
-    color: var(--color-text-muted);
+    color: var(--color-primary);
     font-family: var(--font-sans);
-    font-size: 0.85rem;
-    gap: 8px;
-    transition: background var(--transition-smooth);
+    font-size: 1.2rem;
+    font-weight: 500;
 }
 
 .gallery-placeholder-icon {
-    font-size: 2rem;
+    font-size: 3rem;
+    margin-bottom: 10px;
+    opacity: 0.9;
+}
+
+.swiper-pagination-bullet {
+    background: var(--color-secondary);
     opacity: 0.5;
 }
 
-.gallery-placeholder:hover {
-    background: linear-gradient(
-        135deg,
-        var(--color-accent-light) 0%,
-        var(--color-cream-dark) 50%,
-        var(--color-accent-light) 100%
-    );
+.swiper-pagination-bullet-active {
+    opacity: 1;
 }
 
 /* ============================================

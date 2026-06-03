@@ -11,6 +11,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
 
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -290,43 +292,46 @@
             </div>
         </div>
 
-        <div class="gallery-reel">
-            <div class="gallery-item gallery-item-large animate-on-scroll fade-in-up" data-delay="100">
-                <div class="gallery-placeholder">
-                    <div class="gallery-placeholder-icon">📸</div>
-                    <span>Photo 1</span>
+        <div class="swiper swiper-gallery animate-on-scroll fade-in-up" data-delay="100">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="gallery-placeholder">
+                        <div class="gallery-placeholder-icon">📸</div>
+                        <span>Photo 1</span>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="gallery-placeholder">
+                        <div class="gallery-placeholder-icon">📸</div>
+                        <span>Photo 2</span>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="gallery-placeholder">
+                        <div class="gallery-placeholder-icon">📸</div>
+                        <span>Photo 3</span>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="gallery-placeholder">
+                        <div class="gallery-placeholder-icon">📸</div>
+                        <span>Photo 4</span>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="gallery-placeholder">
+                        <div class="gallery-placeholder-icon">📸</div>
+                        <span>Photo 5</span>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="gallery-placeholder">
+                        <div class="gallery-placeholder-icon">📸</div>
+                        <span>Photo 6</span>
+                    </div>
                 </div>
             </div>
-            <div class="gallery-item animate-on-scroll fade-in-up" data-delay="200">
-                <div class="gallery-placeholder">
-                    <div class="gallery-placeholder-icon">📸</div>
-                    <span>Photo 2</span>
-                </div>
-            </div>
-            <div class="gallery-item animate-on-scroll fade-in-up" data-delay="300">
-                <div class="gallery-placeholder">
-                    <div class="gallery-placeholder-icon">📸</div>
-                    <span>Photo 3</span>
-                </div>
-            </div>
-            <div class="gallery-item animate-on-scroll fade-in-up" data-delay="400">
-                <div class="gallery-placeholder">
-                    <div class="gallery-placeholder-icon">📸</div>
-                    <span>Photo 4</span>
-                </div>
-            </div>
-            <div class="gallery-item gallery-item-large animate-on-scroll fade-in-up" data-delay="500">
-                <div class="gallery-placeholder">
-                    <div class="gallery-placeholder-icon">📸</div>
-                    <span>Photo 5</span>
-                </div>
-            </div>
-            <div class="gallery-item animate-on-scroll fade-in-up" data-delay="600">
-                <div class="gallery-placeholder">
-                    <div class="gallery-placeholder-icon">📸</div>
-                    <span>Photo 6</span>
-                </div>
-            </div>
+            <div class="swiper-pagination"></div>
         </div>
     </section>
 
@@ -457,6 +462,8 @@
         </svg>
     </button>
 
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

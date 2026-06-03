@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const randomRot = (Math.random() * 10) - 5;
                     card.dataset.startRot = randomRot;
                 }
-                card.style.transform = `scale(${1 - index * 0.05}) translateY(${index * 15}px) rotate(${card.dataset.startRot}deg)`;
+                card.style.transform = `translate3d(0, ${index * 15}px, ${-index * 40}px) rotateZ(${card.dataset.startRot}deg)`;
             });
         }
 
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const topCard = cards[0];
             const rotation = parseFloat(topCard.dataset.startRot) + (currentX / 15);
-            topCard.style.transform = `translate(${currentX}px, ${currentY}px) rotate(${rotation}deg)`;
+            topCard.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) rotateZ(${rotation}deg) rotateY(${currentX / 15}deg) rotateX(${-currentY / 15}deg)`;
         }
 
         function handleDragEnd(e) {
@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (Math.abs(currentX) > Math.max(threshold, 80)) { 
                 const direction = currentX > 0 ? 1 : -1;
                 topCard.classList.add('swiped');
-                topCard.style.transform = `translate(${direction * window.innerWidth * 1.5}px, ${currentY + (currentY > 0 ? 100 : -100)}px) rotate(${direction * 45}deg)`;
+                topCard.style.transform = `translate3d(${direction * window.innerWidth * 1.5}px, ${currentY + (currentY > 0 ? 100 : -100)}px, 0) rotateZ(${direction * 45}deg) rotateY(${direction * 90}deg)`;
                 
                 setTimeout(() => {
                     topCard.remove();
@@ -170,8 +170,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }, 300);
             } else { 
-                topCard.style.transition = 'transform 0.3s ease';
-                topCard.style.transform = `scale(1) translateY(0px) rotate(${topCard.dataset.startRot}deg)`;
+                topCard.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                topCard.style.transform = `translate3d(0, 0, 0) rotateZ(${topCard.dataset.startRot}deg)`;
             }
             
             currentX = 0;

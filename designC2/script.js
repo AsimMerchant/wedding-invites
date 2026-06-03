@@ -51,23 +51,50 @@ document.addEventListener('DOMContentLoaded', () => {
     revealElements.forEach(el => observer.observe(el));
 
     // Parallax Gallery Logic
-    const parallaxElements = document.querySelectorAll('.parallax-pair [data-speed]');
-    const galleryParallax = document.getElementById('gallery-parallax');
-    
-    if (galleryParallax && parallaxElements.length > 0) {
-        window.addEventListener('scroll', () => {
-            const rect = galleryParallax.getBoundingClientRect();
-            // Check if gallery is visible in the viewport
-            if (rect.top < window.innerHeight && rect.bottom > 0) {
-                const scrollProgress = window.innerHeight - rect.top;
-                
-                parallaxElements.forEach(el => {
-                    const speed = parseFloat(el.getAttribute('data-speed'));
-                    const yOffset = scrollProgress * speed;
-                    el.style.transform = `translateY(${yOffset}px)`;
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+
+        if (window.innerWidth > 768) {
+            const columns = document.querySelectorAll('.parallax-column');
+            if (columns.length === 3) {
+                // Initial offsets
+                gsap.set(columns[0], { y: 40 });
+                gsap.set(columns[1], { y: -40 });
+                gsap.set(columns[2], { y: 20 });
+
+                // Smooth scroll animation with scrubbing
+                gsap.to(columns[0], {
+                    y: -60,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: ".gallery-glass",
+                        start: "top bottom",
+                        end: "bottom top",
+                        scrub: 1
+                    }
+                });
+                gsap.to(columns[1], {
+                    y: 60,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: ".gallery-glass",
+                        start: "top bottom",
+                        end: "bottom top",
+                        scrub: 1
+                    }
+                });
+                gsap.to(columns[2], {
+                    y: -40,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: ".gallery-glass",
+                        start: "top bottom",
+                        end: "bottom top",
+                        scrub: 1
+                    }
                 });
             }
-        });
+        }
     }
 
     // Dynamic blob cursor follow effect (optional enhancement)

@@ -25,8 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── Text Reveal ──
   initTextReveal();
 
-  // ── Glow Gallery ──
-  initGlowGallery();
+  // ── Image Trail Gallery ──
+  initImageTrailGallery();
 });
 
 /* ═══════════════════════════
@@ -307,42 +307,74 @@ function initTextReveal() {
 }
 
 /* ═══════════════════════════
-   GLOW GALLERY
+   IMAGE TRAIL GALLERY
    ═══════════════════════════ */
-function initGlowGallery() {
-  const wrapper = document.getElementById('glowGallery');
-  if (!wrapper) return;
+function initImageTrailGallery() {
+  const container = document.getElementById('imageTrailContainer');
+  if (!container) return;
 
-  const updateMask = (e) => {
+  const images = Array.from(container.querySelectorAll('.trail-image'));
+  if (images.length === 0 || typeof gsap === 'undefined') return;
+
+  let globalIndex = 0;
+  let last = { x: 0, y: 0 };
+  let isFirstMove = true;
+
+  const activate = (image, x, y) => {
+    image.style.left = `${x}px`;
+    image.style.top = `${y}px`;
+    image.style.zIndex = globalIndex;
+    
+    // Animate in
+    gsap.killTweensOf(image);
+    gsap.fromTo(image, 
+      { opacity: 0, scale: 0.2, rotation: (Math.random() - 0.5) * 30 },
+      { opacity: 1, scale: 1, rotation: (Math.random() - 0.5) * 20, duration: 0.6, ease: "back.out(1.7)" }
+    );
+    
+    // Animate out after a delay
+    gsap.to(image, {
+      opacity: 0,
+      scale: 0.8,
+      duration: 1.2,
+      ease: "power2.out",
+      delay: 1.5
+    });
+  }
+
+  const handleMove = (e) => {
+    const rect = container.getBoundingClientRect();
+    
     let clientX, clientY;
     if (e.touches && e.touches.length > 0) {
       clientX = e.touches[0].clientX;
       clientY = e.touches[0].clientY;
-      wrapper.classList.add('active');
+      container.classList.add('active');
     } else {
       clientX = e.clientX;
       clientY = e.clientY;
     }
-
-    const rect = wrapper.getBoundingClientRect();
+    
     const x = clientX - rect.left;
     const y = clientY - rect.top;
 
-    wrapper.style.setProperty('--mouse-x', `${x}px`);
-    wrapper.style.setProperty('--mouse-y', `${y}px`);
+    if (isFirstMove) {
+      isFirstMove = false;
+      last = { x, y };
+      return;
+    }
+
+    const distance = Math.hypot(x - last.x, y - last.y);
+    if (distance > 70) {
+      const img = images[globalIndex % images.length];
+      activate(img, x, y);
+      last = { x, y };
+      globalIndex++;
+    }
   };
 
-  wrapper.addEventListener('mousemove', updateMask);
-  
-  wrapper.addEventListener('touchmove', (e) => {
-    updateMask(e);
-  }, { passive: true });
-
-  wrapper.addEventListener('touchstart', (e) => {
-    updateMask(e);
-  }, { passive: true });
-
-  wrapper.addEventListener('touchend', () => {
-    wrapper.classList.remove('active');
-  });
+  container.addEventListener('mousemove', handleMove);
+  container.addEventListener('touchmove', handleMove, { passive: true });
+  container.addEventListener('touchstart', handleMove, { passive: true });
+  container.addEventListener('touchend', () => container.classList.remove('active'));
 }

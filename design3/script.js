@@ -165,57 +165,65 @@
     }
   }
 
-  /* ---------- GYROSCOPE / MOUSE TILT GALLERY ---------- */
-  function initGyroGallery() {
-    const items = document.querySelectorAll('.gallery__item');
-    if (!items.length) return;
-
-    // Set initial positions based on data attributes
-    items.forEach(item => {
-      const top = item.getAttribute('data-top');
-      const left = item.getAttribute('data-left');
-      const rot = item.getAttribute('data-rot');
-      
-      item.style.top = `${top}%`;
-      item.style.left = `${left}%`;
-      item.style.setProperty('--base-rot', `${rot}deg`);
-    });
-
-    const scatterContainer = document.getElementById('gallery-scatter');
-
-    function updateTilt(x, y) {
-      items.forEach((item, index) => {
-        const factor = (index % 2 === 0) ? 1 : -1;
-        const tiltX = x * factor * 0.5;
-        const tiltY = y * factor * 0.5;
-        const tiltRot = (x * y) * 0.005;
-
-        item.style.setProperty('--tilt-x', `${tiltX}px`);
-        item.style.setProperty('--tilt-y', `${tiltY}px`);
-        item.style.setProperty('--tilt-rot', `${tiltRot}deg`);
+  /* ---------- LENIS SMOOTH SCROLL & GALLERY SKEW ---------- */
+  function initScrollAndGallery() {
+    // Initialize Lenis
+    if (typeof Lenis !== 'undefined') {
+      const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        direction: 'vertical',
+        gestureDirection: 'vertical',
+        smooth: true,
+        mouseMultiplier: 1,
+        smoothTouch: false,
+        touchMultiplier: 2,
+        infinite: false,
       });
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
+
+      // Sync GSAP ScrollTrigger with Lenis
+      if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        lenis.on('scroll', ScrollTrigger.update);
+
+        gsap.ticker.add((time)=>{
+          lenis.raf(time * 1000);
+        });
+        gsap.ticker.lagSmoothing(0);
+      }
     }
 
-    // Desktop Mouse Fallback
-    document.addEventListener('mousemove', (e) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 100;
-      const y = (e.clientY / window.innerHeight - 0.5) * 100;
-      updateTilt(x, y);
-    });
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      // Skew Effect on Scroll Velocity
+      let proxy = { skew: 0 },
+          skewSetter = gsap.quickSetter(".gallery__item-skew", "skewY", "deg"),
+          clamp = gsap.utils.clamp(-20, 20);
 
-    // Mobile Gyroscope
-    if (window.DeviceOrientationEvent) {
-      window.addEventListener('deviceorientation', (e) => {
-        if (e.gamma !== null && e.beta !== null) {
-          const x = Math.max(-45, Math.min(45, e.gamma));
-          const y = Math.max(-45, Math.min(45, e.beta - 45)); // assume holding phone at 45deg
-          updateTilt(x, y);
+      ScrollTrigger.create({
+        onUpdate: (self) => {
+          let skew = clamp(self.getVelocity() / -100);
+          
+          if (Math.abs(skew) > Math.abs(proxy.skew)) {
+            proxy.skew = skew;
+            gsap.to(proxy, {
+              skew: 0,
+              duration: 0.8,
+              ease: "power3",
+              overwrite: true,
+              onUpdate: () => skewSetter(proxy.skew)
+            });
+          }
         }
-      }, true);
+      });
     }
   }
 
-  initGyroGallery();
+  initScrollAndGallery();
 
   /* ---------- SCROLL EVENT LISTENER ---------- */
   let ticking = false;
@@ -285,21 +293,10 @@
     // if (musicPlaying) audio.play(); else audio.pause();
   });
 
-  /* ---------- GALLERY HOVER GLOW & GYROSCOPE TILT ---------- */
-  const galleryItems = document.querySelectorAll('.gallery__item');
-  const galleryScatter = document.getElementById('gallery-scatter');
+  /* ---------- GALLERY HOVER GLOW ---------- */
+  const galleryItemsSkew = document.querySelectorAll('.gallery__item-skew');
 
-  // Base setup
-  galleryItems.forEach(function (item) {
-    const rot = item.getAttribute('data-rot') || 0;
-    const top = item.getAttribute('data-top') || 50;
-    const left = item.getAttribute('data-left') || 50;
-    
-    item.style.setProperty('--base-rot', rot + 'deg');
-    item.style.top = top + '%';
-    item.style.left = left + '%';
-
-    // Hover glow
+  galleryItemsSkew.forEach(function (item) {
     item.addEventListener('mousemove', function (e) {
       const rect = item.getBoundingClientRect();
       const x = ((e.clientX - rect.left) / rect.width) * 100;
@@ -310,54 +307,6 @@
       item.style.background = '';
     });
   });
-
-  // Tilt update logic
-  function updateGalleryTilt(tiltX, tiltY) {
-    galleryItems.forEach((item, index) => {
-      const factor = (index % 3 + 1) * 0.4; // 0.4, 0.8, 1.2
-      const moveX = tiltX * 30 * factor;
-      const moveY = tiltY * 30 * factor;
-      const rot = tiltX * 8 * factor;
-      
-      item.style.setProperty('--tilt-x', moveX + 'px');
-      item.style.setProperty('--tilt-y', moveY + 'px');
-      item.style.setProperty('--tilt-rot', rot + 'deg');
-    });
-  }
-
-  // Device orientation
-  let hasOrientation = false;
-  window.addEventListener('deviceorientation', function (e) {
-    if (e.beta === null || e.gamma === null) return;
-    hasOrientation = true;
-    
-    let tiltX = e.gamma / 45;
-    let tiltY = (e.beta - 45) / 45;
-    
-    tiltX = Math.max(-1, Math.min(1, tiltX));
-    tiltY = Math.max(-1, Math.min(1, tiltY));
-    
-    updateGalleryTilt(tiltX, tiltY);
-  });
-
-  // Mouse fallback
-  if (galleryScatter) {
-    galleryScatter.addEventListener('mousemove', function (e) {
-      if (hasOrientation) return;
-      const rect = galleryScatter.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      
-      const tiltX = (x / rect.width) * 2 - 1;
-      const tiltY = (y / rect.height) * 2 - 1;
-      
-      updateGalleryTilt(tiltX, tiltY);
-    });
-    galleryScatter.addEventListener('mouseleave', function () {
-      if (hasOrientation) return;
-      updateGalleryTilt(0, 0);
-    });
-  }
 
   /* ---------- SMOOTH REVEAL ON DOM READY ---------- */
   document.addEventListener('DOMContentLoaded', function () {

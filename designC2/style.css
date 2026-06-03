@@ -10,8 +10,9 @@
     --f-sans: 'Outfit', sans-serif;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: var(--f-sans); color: var(--c-text); min-height: 100vh; overflow-x: hidden; background: #1a1a2e; }
+html, body { overflow-x: hidden !important; max-width: 100%; box-sizing: border-box; }
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: inherit; }
+body { font-family: var(--f-sans); color: var(--c-text); min-height: 100vh; background: #1a1a2e; }
 
 /* Dynamic Blob Background */
 .blob-bg { position: fixed; inset: 0; z-index: -2; overflow: hidden; background: #1a1a2e; }
@@ -69,60 +70,15 @@ body { font-family: var(--f-sans); color: var(--c-text); min-height: 100vh; over
 @keyframes pulseGlow { 0% { box-shadow: 0 0 10px rgba(255,255,255,0.2); } 50% { box-shadow: 0 0 30px rgba(255,255,255,0.6); } 100% { box-shadow: 0 0 10px rgba(255,255,255,0.2); } }
 
 /* Gallery Parallax */
-.gallery-parallax { margin-bottom: 6rem; overflow: hidden; padding: 2rem 0; }
-.parallax-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 4rem 2rem; }
-.parallax-pair { position: relative; height: 350px; display: flex; align-items: center; justify-content: center; perspective: 1000px; }
-
-.glass-layer { 
-    position: absolute; 
-    bottom: 20px; right: 20px; 
-    width: 70%; height: 50%; 
-    background: var(--glass-bg); 
-    backdrop-filter: blur(16px); 
-    -webkit-backdrop-filter: blur(16px); 
-    border: 1px solid var(--glass-border); 
-    box-shadow: var(--glass-shadow); 
-    border-radius: 20px; 
-    z-index: 2; 
-}
-.photo-layer { 
-    position: absolute; 
-    top: 20px; left: 20px; 
-    width: 70%; height: 70%; 
-    background: rgba(255,255,255,0.1); 
-/* Gallery Parallax */
-.gallery-glass { margin-bottom: 6rem; overflow: hidden; padding: 2rem 0; }
-.parallax-glass-container { display: flex; justify-content: center; gap: 2vw; max-width: 1200px; margin: 0 auto; }
-.parallax-column { display: flex; flex-direction: column; gap: 2vw; width: 30%; }
+.gallery-glass { margin-bottom: 6rem; padding: 2rem 0; overflow: hidden; }
+.parallax-glass-container { display: flex; justify-content: center; gap: 2vw; max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; padding: 0 15px; }
+.parallax-column { display: flex; flex-direction: column; gap: 2vw; width: 33.333%; will-change: transform; }
 .gallery-ph { height: 35vh; min-height: 200px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.2rem; font-weight: bold; letter-spacing: 2px; }
-.fast-col { transform: translateY(40px); }
-.slow-col { transform: translateY(-30px); }
-.med-col { transform: translateY(10px); }
 
 @media (max-width: 768px) {
     .parallax-glass-container { flex-direction: column; gap: 2rem; padding: 0 1rem; }
     .parallax-column { width: 100%; transform: none !important; }
     .gallery-ph { height: 250px; }
-}
-    border-radius: 12px; 
-    z-index: 1; 
-    display: flex; align-items: center; justify-content: center; 
-    color: #fff; font-size: 1.2rem; font-weight: 500; letter-spacing: 1px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-}
-
-/* Alternate positioning to make grid dynamic */
-.parallax-pair:nth-child(even) .glass-layer {
-    bottom: 20px; left: 20px; right: auto;
-}
-.parallax-pair:nth-child(even) .photo-layer {
-    top: 20px; right: 20px; left: auto;
-}
-.parallax-pair:nth-child(3n) .glass-layer {
-    bottom: 40px; left: 15%; right: auto; width: 80%; height: 40%;
-}
-.parallax-pair:nth-child(3n) .photo-layer {
-    top: 10px; right: 15%; left: auto; width: 60%; height: 80%;
 }
 
 /* Events Grid */

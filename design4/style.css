@@ -12,6 +12,8 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { overflow-x: hidden !important; max-width: 100%; box-sizing: border-box; }
+*, *::before, *::after { box-sizing: inherit; margin: 0; padding: 0; }
 body { font-family: var(--f-body); background-color: var(--c-cream); color: var(--c-forest); overflow-x: hidden; }
 
 /* Loader */
@@ -74,9 +76,11 @@ body { font-family: var(--f-body); background-color: var(--c-cream); color: var(
 .accordion-gallery {
     display: flex;
     width: 100%;
+    max-width: 100%;
     height: 450px;
     gap: 15px;
     margin-top: 3rem;
+    overflow: hidden;
 }
 .accordion-item {
     flex: 1;
@@ -190,6 +194,7 @@ body { font-family: var(--f-body); background-color: var(--c-cream); color: var(
     .event-card--main { transform: none; }
     .event-card--main:hover { transform: translateY(-10px); }
     .events-grid { grid-template-columns: 1fr; }
-    .accordion-gallery { flex-direction: column; height: 600px; }
+    .accordion-gallery { flex-direction: column; height: 600px; width: 100%; max-width: 100%; overflow: hidden; box-sizing: border-box; }
+    .accordion-item { width: 100%; }
     .accordion-item.active { flex: 3; }
 }

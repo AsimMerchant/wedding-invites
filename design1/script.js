@@ -294,6 +294,41 @@
   }
 
   /* ─────────────────────────────────────────────
+     9. GSAP GALLERY HORIZONTAL SCROLL
+     ───────────────────────────────────────────── */
+  function initGalleryScroll() {
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+    
+    gsap.registerPlugin(ScrollTrigger);
+
+    const galleryScroll = document.querySelector('.gallery-horizontal-scroll');
+    const gallerySection = document.querySelector('.section--gallery');
+    const pinnedContainer = document.querySelector('.gallery-pinned-container');
+
+    if (!galleryScroll || !gallerySection || !pinnedContainer) return;
+
+    function getScrollAmount() {
+      let scrollWidth = galleryScroll.scrollWidth;
+      return -(scrollWidth - window.innerWidth + window.innerWidth * 0.1); 
+    }
+
+    const tween = gsap.to(galleryScroll, {
+      x: getScrollAmount,
+      ease: "none"
+    });
+
+    ScrollTrigger.create({
+      trigger: gallerySection,
+      start: "top top",
+      end: () => `+=${getScrollAmount() * -1}`,
+      pin: true,
+      animation: tween,
+      scrub: 1,
+      invalidateOnRefresh: true
+    });
+  }
+
+  /* ─────────────────────────────────────────────
      INIT AFTER LOAD
      ───────────────────────────────────────────── */
   function initAfterLoad() {
@@ -304,5 +339,6 @@
     initCountdown();
     initMusicToggle();
     initScrollIndicatorHide();
+    initGalleryScroll();
   }
 })();

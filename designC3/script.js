@@ -99,6 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        photoOverlay.style.transition = 'none';
         photoElement.style.viewTransitionName = 'morphing-photo';
         
         const transition = document.startViewTransition(() => {
@@ -106,6 +107,10 @@ document.addEventListener('DOMContentLoaded', () => {
             expandedPhoto.style.backgroundImage = photoElement.style.backgroundImage;
             photoOverlay.classList.add('active');
             activePhotoElement = photoElement;
+        });
+
+        transition.finished.then(() => {
+            photoOverlay.style.transition = '';
         });
     }
 
@@ -119,6 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        photoOverlay.style.transition = 'none';
         const transition = document.startViewTransition(() => {
             photoOverlay.classList.remove('active');
             if (activePhotoElement) {
@@ -131,6 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 activePhotoElement.style.viewTransitionName = '';
                 activePhotoElement = null;
             }
+            photoOverlay.style.transition = '';
         });
     }
 

@@ -313,25 +313,33 @@
     }
 
     // ============================================
-    // 11. GALLERY HOVER EFFECT
+    // 11. GALLERY SWIPER CAROUSEL
     // ============================================
     function initGalleryEffects() {
-        const items = document.querySelectorAll('.gallery-item');
-        items.forEach((item) => {
-            item.addEventListener('mouseenter', () => {
-                items.forEach((other) => {
-                    if (other !== item) {
-                        other.style.opacity = '0.6';
-                        other.style.transition = 'opacity 0.3s ease';
-                    }
-                });
+        if (typeof Swiper !== 'undefined') {
+            new Swiper('.swiper-gallery', {
+                effect: 'coverflow',
+                grabCursor: true,
+                centeredSlides: true,
+                slidesPerView: 'auto',
+                coverflowEffect: {
+                    rotate: 50,
+                    stretch: 0,
+                    depth: 100,
+                    modifier: 1,
+                    slideShadows: true,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+                loop: true
             });
-            item.addEventListener('mouseleave', () => {
-                items.forEach((other) => {
-                    other.style.opacity = '1';
-                });
-            });
-        });
+        }
     }
 
     // ============================================

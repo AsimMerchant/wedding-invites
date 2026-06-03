@@ -99,6 +99,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // --- GSAP Accordion Animation ---
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+        
+        gsap.from('.accordion-item', {
+            scrollTrigger: {
+                trigger: '.accordion-gallery',
+                start: 'top 85%',
+                toggleActions: 'play none none none'
+            },
+            duration: 1.2,
+            y: 80,
+            opacity: 0,
+            scale: 0.95,
+            stagger: 0.15,
+            ease: 'power4.out'
+        });
+    }
+
     // --- Parallax Effect ---
     const parallaxBg = document.getElementById('gallery-bg');
     if (parallaxBg) {
@@ -116,3 +135,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
