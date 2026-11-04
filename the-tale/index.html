@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Asim weds Femina · The Tale of F &amp; A · 4–7 December 2026</title>
+  <meta name="description" content="With the blessings of Bismillah ir Rahman ir Rahim, Asim weds Femina — Mehendi, Haldi, Sangeet, Baraat, Nikaah & Reception, 4–7 December 2026, Surat & Botad, Gujarat. #TheTaleofFandA">
+  <meta name="author" content="Asim & Femina">
+  <meta name="theme-color" content="#eef1ea" id="metaTheme">
+  <link rel="canonical" href="https://asimmerchant.github.io/wedding-invites/">
+
+  <!-- WhatsApp / social preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://asimmerchant.github.io/wedding-invites/">
+  <meta property="og:title" content="Asim weds Femina — The Tale of F & A">
+  <meta property="og:description" content="Two souls with but a single thought, two hearts that beat as one. Join us 4–7 December 2026 · Surat & Botad. #TheTaleofFandA">
+  <meta property="og:image" content="https://asimmerchant.github.io/wedding-invites/assets/img/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="The Tale of F & A">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Asim weds Femina — The Tale of F & A">
+  <meta name="twitter:description" content="4–7 December 2026 · Surat & Botad · #TheTaleofFandA">
+  <meta name="twitter:image" content="https://asimmerchant.github.io/wedding-invites/assets/img/og-card.png">
+
+  <link rel="icon" type="image/png" href="./assets/img/favicon-crest.png">
+
+  <link rel="preload" href="./assets/fonts/pinyonscript-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./assets/fonts/marcellus-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./assets/fonts/cormorantgaramond-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="./assets/css/style.css?v=tale3">
+  <noscript><style>
+    #veil, #thread, #dust, #cursor, #soundToggle, .scroll-cue { display: none !important; }
+    .will-reveal { opacity: 1 !important; transform: none !important; }
+    .countdown { display: none; }
+  </style></noscript>
+</head>
+<body data-theme="paper">
+
+  <a class="skip-link" href="#overture">Skip to the invitation</a>
+
+  <!-- ambient gold dust -->
+  <canvas id="dust" aria-hidden="true"></canvas>
+  <!-- WebGL atmosphere: depth dust + Sangeet lanterns -->
+  <canvas id="gl" aria-hidden="true"></canvas>
+
+  <!-- ornament library (referenced via <use>) -->
+  <svg class="svg-defs" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="foil" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0"   stop-color="#8f6a2e"/>
+        <stop offset=".28" stop-color="#e7c982"/>
+        <stop offset=".5"  stop-color="#b78e4e"/>
+        <stop offset=".72" stop-color="#f0dca4"/>
+        <stop offset="1"   stop-color="#9a7433"/>
+      </linearGradient>
+      <radialGradient id="lampGlow" cx=".5" cy=".45" r=".6">
+        <stop offset="0" stop-color="#ffd98a" stop-opacity=".95"/>
+        <stop offset=".55" stop-color="#f2b25c" stop-opacity=".38"/>
+        <stop offset="1" stop-color="#f2b25c" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="moonGlow" cx=".5" cy=".5" r=".55">
+        <stop offset="0" stop-color="#f7e9c4" stop-opacity=".8"/>
+        <stop offset="1" stop-color="#f7e9c4" stop-opacity="0"/>
+      </radialGradient>
+
+      <g id="orn-divider">
+        <line x1="4"    y1="12" x2="86"  y2="12"/>
+        <line x1="134"  y1="12" x2="216" y2="12"/>
+        <rect x="103" y="5" width="14" height="14" transform="rotate(45 110 12)"/>
+        <rect x="106.5" y="8.5" width="7" height="7" transform="rotate(45 110 12)" class="fill-accent"/>
+        <circle cx="110" cy="12" r="1.6" class="fill-paper"/>
+        <circle cx="94"  cy="12" r="1.4"/><circle cx="126" cy="12" r="1.4"/>
+      </g>
+
+      <!-- small medallion knot the thread passes through -->
+      <g id="orn-knot">
+        <circle r="17" class="knot-ring"/>
+        <circle r="11" class="knot-core"/>
+        <rect x="-5" y="-5" width="10" height="10" transform="rotate(45)" class="knot-diamond"/>
+        <circle r="2" class="knot-eye"/>
+        <path d="M -30 0 Q -22 -6 -17 0" class="knot-whisker"/>
+        <path d="M 30 0 Q 22 -6 17 0" class="knot-whisker"/>
+      </g>
+
+      <g id="orn-crescent">
+        <path d="M 0 -14 A 14 14 0 1 0 0 14 A 11 11 0 1 1 0 -14 Z"/>
+      </g>
+
+      <g id="orn-star8">
+        <path d="M0,-9 L2.2,-2.2 L9,0 L2.2,2.2 L0,9 L-2.2,2.2 L-9,0 L-2.2,-2.2 Z"/>
+      </g>
+    </defs>
+  </svg>
+
+  <!-- preloader: the sealed veil -->
+  <div id="veil" role="status" aria-label="Loading the invitation">
+    <div class="veil-inner">
+      <img class="veil-crest crest--img" src="./assets/img/crest.png" alt="" width="420" height="420">
+      <p class="veil-bismillah">Bismillah ir Rahman ir Rahim</p>
+      <p class="veil-count"><span id="veilPercent">0</span></p>
+    </div>
+  </div>
+
+  <button id="soundToggle" type="button" aria-pressed="false" aria-label="Play ambient music" title="Ambient music">
+    <svg viewBox="0 0 24 24" aria-hidden="true" class="snd-icon">
+      <path class="snd-wave" d="M4 9 v6 M8 6.5 v11 M12 4 v16 M16 6.5 v11 M20 9 v6"/>
+      <line class="snd-slash" x1="3" y1="21" x2="21" y2="3"/>
+    </svg>
+  </button>
+
+  <div id="cursor" aria-hidden="true"></div>
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <main id="tale">
+
+    <!-- the golden thread (drawn by JS across the whole page) -->
+    <svg id="thread" aria-hidden="true" focusable="false">
+      <path id="threadGlow" class="thread-glow" d="M -10 -10"/>
+      <path id="threadCore" class="thread-core" d="M -10 -10"/>
+    </svg>
+
+    <!-- ══════════════════ OVERTURE ══════════════════ -->
+    <section class="chapter chapter--overture" id="overture" data-theme="paper" aria-label="Invitation">
+      <div class="frame frame--paper" aria-hidden="true"></div>
+
+      <header class="overture-head will-reveal">
+        <img class="crest crest--img" src="./assets/img/crest.png" alt="Asim & Femina monogram crest" width="420" height="420">
+        <p class="eyebrow">Bismillah ir Rahman ir Rahim</p>
+      </header>
+
+      <div class="overture-names">
+        <h1 class="names will-reveal">
+          <span class="name name-a">Asim</span>
+          <span class="weds">weds</span>
+          <span class="name name-b">Femina</span>
+        </h1>
+        <p class="parents will-reveal">
+          <span>(S/o Munira &amp; Nizar Merchant)</span>
+          <span class="dot-sep" aria-hidden="true">·</span>
+          <span>(D/o Laila &amp; Sohil Darediya)</span>
+        </p>
+        <svg class="orn will-reveal" viewBox="0 0 220 24" aria-hidden="true"><use href="#orn-divider"/></svg>
+        <p class="couplet will-reveal">Two souls with but a single thought,<br>two hearts that beat as one.</p>
+      </div>
+
+      <div class="overture-when will-reveal">
+        <p class="dates"><span class="dates-range">4 – 7 December 2026</span><span class="dates-cities">Surat &amp; Botad · Gujarat</span></p>
+        <div class="countdown" id="countdown" aria-label="Countdown to the Mehendi">
+          <div class="cd-cell"><span class="cd-num" id="cdDays">—</span><span class="cd-label">days</span></div>
+          <div class="cd-cell"><span class="cd-num" id="cdHours">—</span><span class="cd-label">hours</span></div>
+          <div class="cd-cell"><span class="cd-num" id="cdMins">—</span><span class="cd-label">minutes</span></div>
+          <div class="cd-cell"><span class="cd-num" id="cdSecs">—</span><span class="cd-label">seconds</span></div>
+        </div>
+        <p class="cd-note" id="cdNote">until the tale begins</p>
+      </div>
+
+      <div class="scroll-cue" aria-hidden="true">
+        <svg class="cue-thread" viewBox="0 0 40 56">
+          <path class="cue-path" d="M20 2 C 30 14, 10 26, 20 38 C 26 46, 16 50, 20 54" />
+        </svg>
+        <span>unwind the tale</span>
+      </div>
+    </section>
+
+    <!-- ══════════════════ CHAPTER I · MEHENDI ══════════════════ -->
+    <section class="chapter chapter--event" id="mehendi" data-theme="mehendi" aria-label="Chapter one, Mehendi">
+      <svg class="scene scene-mehendi" viewBox="0 0 500 340" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+        <g class="scene-sky">
+          <ellipse cx="250" cy="326" rx="235" ry="86" class="glowDisk meh-glow"/>
+        </g>
+        <g class="scene-mid">
+          <!-- grand arch -->
+          <path class="ln gold" d="M120 330 L120 150 Q120 66 250 66 Q380 66 380 150 L380 330"/>
+          <path class="ln gold thin" d="M136 330 L136 156 Q136 82 250 82 Q364 82 364 156 L364 330"/>
+          <!-- inner jaali hint -->
+          <path class="ln accent thin dashed" d="M170 330 L170 176 Q170 116 250 116 Q330 116 330 176 L330 330"/>
+          <!-- hanging marigold strings -->
+          <g class="marigolds">
+            <path class="ln accent thin" d="M170 120 Q178 170 172 232"/>
+            <path class="ln accent thin" d="M250 92 Q246 150 252 218"/>
+            <path class="ln accent thin" d="M330 120 Q322 170 328 232"/>
+            <g class="blooms">
+              <circle cx="172" cy="140" r="7"/><circle cx="175" cy="164" r="6"/><circle cx="172" cy="188" r="7"/><circle cx="173" cy="212" r="5"/>
+              <circle cx="250" cy="112" r="7"/><circle cx="248" cy="138" r="6"/><circle cx="252" cy="164" r="7"/><circle cx="249" cy="190" r="5"/><circle cx="251" cy="206" r="4"/>
+              <circle cx="328" cy="140" r="7"/><circle cx="325" cy="164" r="6"/><circle cx="328" cy="188" r="7"/><circle cx="327" cy="212" r="5"/>
+            </g>
+          </g>
+        </g>
+        <g class="scene-fore">
+          <!-- brass bowl with henna -->
+          <ellipse cx="250" cy="304" rx="64" ry="14" class="fill-soft"/>
+          <path class="ln gold" d="M196 296 Q250 322 304 296"/>
+          <ellipse cx="250" cy="294" rx="52" ry="10" class="ln gold thin"/>
+          <path class="ln accent thin" d="M212 290 Q232 282 250 288 Q272 280 288 290"/>
+          <!-- leaf fans -->
+          <g class="foliage">
+            <path class="ln leaf" d="M84 330 Q80 296 96 272 M96 330 Q100 300 84 284 M90 330 Q104 306 118 300"/>
+            <path class="ln leaf" d="M416 330 Q420 296 404 272 M404 330 Q400 300 416 284 M410 330 Q396 306 382 300"/>
+            <circle cx="96" cy="272" r="3" class="dot-leaf"/><circle cx="84" cy="284" r="3" class="dot-leaf"/><circle cx="118" cy="300" r="3" class="dot-leaf"/>
+            <circle cx="404" cy="272" r="3" class="dot-leaf"/><circle cx="416" cy="284" r="3" class="dot-leaf"/><circle cx="382" cy="300" r="3" class="dot-leaf"/>
+          </g>
+          <ellipse cx="250" cy="332" rx="210" ry="6" class="ground"/>
+        </g>
+      </svg>
+
+      <div class="chapter-body">
+        <span class="knot will-lit" aria-hidden="true"><svg viewBox="-34 -26 68 52"><use href="#orn-knot"/></svg></span>
+        <p class="chapter-num will-reveal">Chapter I</p>
+        <h2 class="chapter-title will-reveal">Mehendi</h2>
+        <p class="chapter-tag will-reveal">Let every hand be hennaed, and every heart be glad.</p>
+        <svg class="orn will-reveal" viewBox="0 0 220 24" aria-hidden="true"><use href="#orn-divider"/></svg>
+
+        <article class="card will-reveal">
+          <p class="card-row"><span class="card-label">Date</span><span class="card-value">Friday, 4 December 2026</span></p>
+          <p class="card-row"><span class="card-label">Time</span><span class="card-value">From 11 AM onwards</span></p>
+          <p class="card-row"><span class="card-label">Note</span><span class="card-value card-note">Followed by lunch and dinner</span></p>
+          <p class="card-row"><span class="card-label">Venue</span>
+            <span class="card-value venue">
+              <strong>53, Saffron, 5th Floor</strong>
+              Karimabad Society, Opposite Divine Child High School
+              <span>Ghod Dod Road · Surat, Gujarat 395001</span>
+            </span>
+          </p>
+          <div class="card-actions">
+            <a class="btn" data-maps="mehendi" href="#" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.2-6-10a6 6 0 1 1 12 0c0 4.8-6 10-6 10Z"/><circle cx="12" cy="10.6" r="2.4"/></svg>Maps
+            </a>
+            <button class="btn" type="button" data-ics="mehendi">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5.5" width="16" height="15" rx="2.5"/><line x1="4" y1="10" x2="20" y2="10"/><line x1="8.5" y1="3.5" x2="8.5" y2="7.5"/><line x1="15.5" y1="3.5" x2="15.5" y2="7.5"/><path class="tick" d="M9 15.5 l2.2 2.2 4-4.5"/></svg>Calendar
+            </button>
+            <button class="btn btn--ghost" type="button" data-copy="53, Saffron, 5th Floor, Karimabad Society, Opposite Divine Child High School, Ghod Dod Road, Surat, Gujarat 395001">Copy address</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ══════════════════ CHAPTER II · HALDI ══════════════════ -->
+    <section class="chapter chapter--event" id="haldi" data-theme="haldi" aria-label="Chapter two, Haldi">
+      <svg class="scene scene-haldi" viewBox="0 0 500 340" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+        <g class="scene-sky">
+          <!-- sun mandala -->
+          <g class="sun" transform="translate(250 150)">
+            <circle r="118" class="ln gold thin"/>
+            <circle r="96"  class="ln gold thin dashed"/>
+            <circle r="64"  class="glowDisk haldi-glow"/>
+            <g class="rays">
+              <path class="ln gold thin" d="M0 -138 L0 -150"/><path class="ln gold thin" d="M0 138 L0 150"/>
+              <path class="ln gold thin" d="M-138 0 L-150 0"/><path class="ln gold thin" d="M138 0 L150 0"/>
+              <path class="ln gold thin" d="M-98 -98 L-107 -107"/><path class="ln gold thin" d="M98 98 L107 107"/>
+              <path class="ln gold thin" d="M98 -98 L107 -107"/><path class="ln gold thin" d="M-98 98 L-107 107"/>
+            </g>
+          </g>
+        </g>
+        <g class="scene-mid">
+          <!-- marigold ruffle -->
+          <g class="ruffle">
+            <circle cx="60"  cy="288" r="9"/><circle cx="92"  cy="282" r="8"/><circle cx="124" cy="288" r="9"/>
+            <circle cx="156" cy="281" r="8"/><circle cx="188" cy="288" r="9"/><circle cx="220" cy="282" r="8"/>
+            <circle cx="252" cy="288" r="9"/><circle cx="284" cy="282" r="8"/><circle cx="316" cy="288" r="9"/>
+            <circle cx="348" cy="281" r="8"/><circle cx="380" cy="288" r="9"/><circle cx="412" cy="282" r="8"/>
+            <circle cx="444" cy="288" r="9"/>
+          </g>
+        </g>
+        <g class="scene-fore">
+          <!-- brass urli with turmeric water -->
+          <path class="ln gold" d="M170 300 Q170 262 250 262 Q330 262 330 300"/>
+          <ellipse cx="250" cy="300" rx="80" ry="13" class="fill-soft"/>
+          <ellipse cx="250" cy="296" rx="66" ry="9" class="haldi-water"/>
+          <ellipse cx="250" cy="295" rx="52" ry="6" class="ln gold thin"/>
+          <g class="petals-float">
+            <circle cx="216" cy="292" r="3.4" class="petal"/><circle cx="262" cy="296" r="3" class="petal"/>
+            <circle cx="286" cy="292" r="3.4" class="petal"/><circle cx="238" cy="297" r="2.6" class="petal"/>
+          </g>
+          <path class="ln accent thin" d="M120 322 Q170 306 250 318 Q330 306 380 322"/>
+          <ellipse cx="250" cy="332" rx="210" ry="6" class="ground"/>
+        </g>
+      </svg>
+
+      <div class="chapter-body">
+        <span class="knot will-lit" aria-hidden="true"><svg viewBox="-34 -26 68 52"><use href="#orn-knot"/></svg></span>
+        <p class="chapter-num will-reveal">Chapter II</p>
+        <h2 class="chapter-title will-reveal">Haldi</h2>
+        <p class="chapter-tag will-reveal">A shower of turmeric, a morning of laughter.</p>
+        <svg class="orn will-reveal" viewBox="0 0 220 24" aria-hidden="true"><use href="#orn-divider"/></svg>
+
+        <article class="card will-reveal">
+          <p class="card-row"><span class="card-label">Date</span><span class="card-value">Saturday, 5 December 2026</span></p>
+          <p class="card-row"><span class="card-label">Time</span><span class="card-value">11:30 AM</span></p>
+          <p class="card-row"><span class="card-label">Note</span><span class="card-value card-note">Followed by traditional lunch</span></p>
+          <p class="card-row"><span class="card-label">Venue</span>
+            <span class="card-value venue">
+              <strong>Mahadev Hotel Restaurant &amp; Banquets</strong>
+              Gadhada Road, near Madhusudan Dairy
+              <span>Botad, Gujarat 364710</span>
+            </span>
+          </p>
+          <div class="card-actions">
+            <a class="btn" data-maps="botad" href="#" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.2-6-10a6 6 0 1 1 12 0c0 4.8-6 10-6 10Z"/><circle cx="12" cy="10.6" r="2.4"/></svg>Maps
+            </a>
+            <button class="btn" type="button" data-ics="haldi">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5.5" width="16" height="15" rx="2.5"/><line x1="4" y1="10" x2="20" y2="10"/><line x1="8.5" y1="3.5" x2="8.5" y2="7.5"/><line x1="15.5" y1="3.5" x2="15.5" y2="7.5"/><path class="tick" d="M9 15.5 l2.2 2.2 4-4.5"/></svg>Calendar
+            </button>
+            <button class="btn btn--ghost" type="button" data-copy="Mahadev Hotel Restaurant & Banquets, Gadhada Road, near Madhusudan Dairy, Botad, Gujarat 364710">Copy address</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ══════════════════ CHAPTER III · SANGEET ══════════════════ -->
+    <section class="chapter chapter--event" id="sangeet" data-theme="sangeet" aria-label="Chapter three, Sangeet">
+      <svg class="scene scene-sangeet" viewBox="0 0 500 340" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+        <g class="scene-sky">
+          <g transform="translate(406 74)"><use href="#orn-crescent" class="crescent"/></g>
+          <circle cx="70" cy="60" r="2" class="star"/><circle cx="120" cy="96" r="1.6" class="star"/>
+          <circle cx="180" cy="52" r="2" class="star"/><circle cx="460" cy="130" r="1.6" class="star"/>
+          <circle cx="30" cy="150" r="1.6" class="star"/><circle cx="350" cy="46" r="1.8" class="star"/>
+        </g>
+        <g class="scene-mid">
+          <!-- hanging lantern garlands (SVG fallback; replaced by 3D garland when WebGL is on) -->
+          <path class="ln gold thin garland-svg" d="M-10 40 Q 250 128 510 40"/>
+          <path class="ln gold thin garland-svg" d="M-10 96 Q 250 190 510 96"/>
+          <g class="lanterns">
+            <g transform="translate(90 66)"><g class="lamp-sway"><circle cy="26" r="34" class="lamp-halo"/><path class="lamp" d="M-11 -6 Q0 -14 11 -6 L8 18 Q0 24 -8 18 Z"/><line class="ln gold thin" x1="0" y1="-26" x2="0" y2="-8"/><circle cy="24" r="2.4" class="lamp-eye"/></g></g>
+            <g transform="translate(190 104)"><g class="lamp-sway"><circle cy="22" r="30" class="lamp-halo"/><path class="lamp" d="M-9 -5 Q0 -12 9 -5 L6.5 15 Q0 20 -6.5 15 Z"/><line class="ln gold thin" x1="0" y1="-24" x2="0" y2="-7"/><circle cy="20" r="2" class="lamp-eye"/></g></g>
+            <g transform="translate(310 104)"><g class="lamp-sway"><circle cy="22" r="30" class="lamp-halo"/><path class="lamp" d="M-9 -5 Q0 -12 9 -5 L6.5 15 Q0 20 -6.5 15 Z"/><line class="ln gold thin" x1="0" y1="-24" x2="0" y2="-7"/><circle cy="20" r="2" class="lamp-eye"/></g></g>
+            <g transform="translate(410 66)"><g class="lamp-sway"><circle cy="26" r="34" class="lamp-halo"/><path class="lamp" d="M-11 -6 Q0 -14 11 -6 L8 18 Q0 24 -8 18 Z"/><line class="ln gold thin" x1="0" y1="-26" x2="0" y2="-8"/><circle cy="24" r="2.4" class="lamp-eye"/></g></g>
+          </g>
+          <!-- dhol & garba sparkle -->
+          <g class="sparkles">
+            <g transform="translate(150 250)"><use href="#orn-star8" class="spark"/></g>
+            <g transform="translate(352 236)"><use href="#orn-star8" class="spark spark-s"/></g>
+            <g transform="translate(250 216)"><use href="#orn-star8" class="spark spark-s"/></g>
+          </g>
+        </g>
+        <g class="scene-fore">
+          <!-- dance floor -->
+          <ellipse cx="250" cy="318" rx="150" ry="16" class="glowDisk floor-glow"/>
+          <ellipse cx="250" cy="318" rx="150" ry="16" class="ln gold thin"/>
+          <path class="ln gold thin dashed" d="M130 318 Q250 344 370 318"/>
+          <ellipse cx="250" cy="332" rx="210" ry="6" class="ground"/>
+        </g>
+      </svg>
+
+      <div class="chapter-body">
+        <span class="knot will-lit" aria-hidden="true"><svg viewBox="-34 -26 68 52"><use href="#orn-knot"/></svg></span>
+        <p class="chapter-num will-reveal">Chapter III</p>
+        <h2 class="chapter-title will-reveal">Sangeet</h2>
+        <p class="chapter-tag will-reveal">Where every step keeps beat, and the night learns to dance.</p>
+        <svg class="orn will-reveal" viewBox="0 0 220 24" aria-hidden="true"><use href="#orn-divider"/></svg>
+
+        <article class="card will-reveal">
+          <p class="card-row"><span class="card-label">Date</span><span class="card-value">Saturday, 5 December 2026</span></p>
+          <p class="card-row"><span class="card-label">Time</span><span class="card-value">8:00 PM</span></p>
+          <p class="card-row"><span class="card-label">Note</span><span class="card-value card-note">Followed by gala dinner</span></p>
+          <p class="card-row"><span class="card-label">Venue</span>
+            <span class="card-value venue">
+              <strong>Mahadev Hotel Restaurant &amp; Banquets</strong>
+              Gadhada Road, near Madhusudan Dairy
+              <span>Botad, Gujarat 364710</span>
+            </span>
+          </p>
+          <div class="card-actions">
+            <a class="btn" data-maps="botad" href="#" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.2-6-10a6 6 0 1 1 12 0c0 4.8-6 10-6 10Z"/><circle cx="12" cy="10.6" r="2.4"/></svg>Maps
+            </a>
+            <button class="btn" type="button" data-ics="sangeet">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5.5" width="16" height="15" rx="2.5"/><line x1="4" y1="10" x2="20" y2="10"/><line x1="8.5" y1="3.5" x2="8.5" y2="7.5"/><line x1="15.5" y1="3.5" x2="15.5" y2="7.5"/><path class="tick" d="M9 15.5 l2.2 2.2 4-4.5"/></svg>Calendar
+            </button>
+            <button class="btn btn--ghost" type="button" data-copy="Mahadev Hotel Restaurant & Banquets, Gadhada Road, near Madhusudan Dairy, Botad, Gujarat 364710">Copy address</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ══════════════════ CHAPTER IV · BARAAT & NIkAAH ══════════════════ -->
+    <section class="chapter chapter--event" id="nikaah" data-theme="nikaah" aria-label="Chapter four, Baraat and Nikaah">
+      <svg class="scene scene-nikaah" viewBox="0 0 500 340" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+        <g class="scene-sky">
+          <g transform="translate(250 96)"><circle r="56" class="glowDisk nikaah-glow"/><use href="#orn-crescent" class="crescent crescent-hero"/></g>
+          <circle cx="110" cy="70" r="2" class="star"/><circle cx="390" cy="86" r="1.8" class="star"/>
+        </g>
+        <g class="scene-mid">
+          <!-- pavilion with onion dome & minarets -->
+          <path class="ln gold" d="M196 330 L196 210 Q196 190 214 190 L286 190 Q304 190 304 210 L304 330"/>
+          <path class="ln gold" d="M204 190 Q204 138 250 118 Q296 138 296 190"/>
+          <path class="ln gold thin" d="M212 190 Q212 146 250 128 Q288 146 288 190"/>
+          <line class="ln gold thin" x1="250" y1="118" x2="250" y2="102"/>
+          <g transform="translate(250 96)"><circle r="3.4" class="crescent-dot"/></g>
+          <path class="ln gold thin" d="M226 330 L226 216 Q226 204 250 204 Q274 204 274 216 L274 330"/>
+          <path class="ln accent thin" d="M232 236 Q250 228 268 236 M232 256 Q250 248 268 256 M232 276 Q250 268 268 276"/>
+          <!-- minarets -->
+          <path class="ln gold thin" d="M150 330 L150 200 Q150 186 158 184 Q166 186 166 200 L166 330 M158 184 L158 168 M150 168 h16"/>
+          <path class="ln gold thin" d="M334 330 L334 200 Q334 186 342 184 Q350 186 350 200 L350 330 M342 184 L342 168 M334 168 h16"/>
+          <circle cx="158" cy="164" r="2" class="crescent-dot"/><circle cx="342" cy="164" r="2" class="crescent-dot"/>
+        </g>
+        <g class="scene-fore">
+          <!-- floral vine path to the arch -->
+          <path class="ln accent thin" d="M20 322 Q80 310 140 320 T 250 322 T 360 320 T 480 322"/>
+          <g class="vine-blooms">
+            <circle cx="60" cy="315" r="4"/><circle cx="140" cy="319" r="3.4"/><circle cx="210" cy="320" r="4"/>
+            <circle cx="300" cy="320" r="3.4"/><circle cx="368" cy="318" r="4"/><circle cx="436" cy="317" r="3.4"/>
+          </g>
+          <ellipse cx="250" cy="332" rx="210" ry="6" class="ground"/>
+        </g>
+      </svg>
+
+      <div class="chapter-body">
+        <span class="knot will-lit" aria-hidden="true"><svg viewBox="-34 -26 68 52"><use href="#orn-knot"/></svg></span>
+        <p class="chapter-num will-reveal">Chapter IV</p>
+        <h2 class="chapter-title will-reveal">Baraat &amp; Nikaah</h2>
+        <p class="chapter-tag will-reveal">The procession arrives; two lives are joined by a single word — Qubool hai.</p>
+        <svg class="orn will-reveal" viewBox="0 0 220 24" aria-hidden="true"><use href="#orn-divider"/></svg>
+
+        <article class="card will-reveal">
+          <h3 class="card-sub">Baraat</h3>
+          <p class="card-row"><span class="card-label">Date</span><span class="card-value">Sunday, 6 December 2026</span></p>
+          <p class="card-row"><span class="card-label">Time</span><span class="card-value">10:00 AM onwards</span></p>
+        </article>
+
+        <article class="card will-reveal">
+          <h3 class="card-sub">Nikaah</h3>
+          <p class="card-row"><span class="card-label">Date</span><span class="card-value">Sunday, 6 December 2026</span></p>
+          <p class="card-row"><span class="card-label">Time</span><span class="card-value">11:00 AM SHARP · Inshaallah</span></p>
+          <p class="card-row"><span class="card-label">Note</span><span class="card-value card-note">Followed by lunch from 12:30 PM onwards</span></p>
+          <p class="card-row"><span class="card-label">Venue</span>
+            <span class="card-value venue">
+              <strong>Mahadev Hotel Restaurant &amp; Banquets</strong>
+              Gadhada Road, near Madhusudan Dairy
+              <span>Botad, Gujarat 364710</span>
+            </span>
+          </p>
+          <div class="card-actions">
+            <a class="btn" data-maps="botad" href="#" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.2-6-10a6 6 0 1 1 12 0c0 4.8-6 10-6 10Z"/><circle cx="12" cy="10.6" r="2.4"/></svg>Maps
+            </a>
+            <button class="btn" type="button" data-ics="baraat"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5.5" width="16" height="15" rx="2.5"/><line x1="4" y1="10" x2="20" y2="10"/><line x1="8.5" y1="3.5" x2="8.5" y2="7.5"/><line x1="15.5" y1="3.5" x2="15.5" y2="7.5"/><path class="tick" d="M9 15.5 l2.2 2.2 4-4.5"/></svg>Baraat</button>
+            <button class="btn" type="button" data-ics="nikaah"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5.5" width="16" height="15" rx="2.5"/><line x1="4" y1="10" x2="20" y2="10"/><line x1="8.5" y1="3.5" x2="8.5" y2="7.5"/><line x1="15.5" y1="3.5" x2="15.5" y2="7.5"/><path class="tick" d="M9 15.5 l2.2 2.2 4-4.5"/></svg>Nikaah</button>
+            <button class="btn btn--ghost" type="button" data-copy="Mahadev Hotel Restaurant & Banquets, Gadhada Road, near Madhusudan Dairy, Botad, Gujarat 364710">Copy address</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ══════════════════ CHAPTER V · RECEPTION ══════════════════ -->
+    <section class="chapter chapter--event" id="reception" data-theme="reception" aria-label="Chapter five, Reception">
+      <svg class="scene scene-reception" viewBox="0 0 500 340" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+        <g class="scene-sky">
+          <!-- canopy swags -->
+          <path class="ln gold" d="M-10 10 Q120 96 250 88 Q380 96 510 10"/>
+          <path class="ln gold thin" d="M-10 26 Q120 112 250 104 Q380 112 510 26"/>
+          <g class="drapes">
+            <path class="ln gold thin" d="M52 42 Q60 92 50 132 M448 42 Q440 92 450 132"/>
+          </g>
+          <!-- string lights -->
+          <path class="ln gold thin" d="M-10 120 Q 250 208 510 120"/>
+          <g class="fairy">
+            <circle cx="40"  cy="136" r="2.6"/><circle cx="88"  cy="152" r="2.2"/><circle cx="136" cy="166" r="2.6"/>
+            <circle cx="184" cy="178" r="2.2"/><circle cx="232" cy="186" r="2.6"/><circle cx="268" cy="188" r="2.2"/>
+            <circle cx="316" cy="180" r="2.6"/><circle cx="364" cy="168" r="2.2"/><circle cx="412" cy="154" r="2.6"/>
+            <circle cx="460" cy="138" r="2.2"/>
+          </g>
+        </g>
+        <g class="scene-mid">
+          <!-- sweetheart table -->
+          <path class="ln gold" d="M180 296 L180 258 Q180 246 192 246 L308 246 Q320 246 320 258 L320 296"/>
+          <path class="ln gold thin" d="M186 296 L186 262 Q186 252 196 252 L304 252 Q314 252 314 262 L314 296"/>
+          <g class="table-candles">
+            <circle cx="212" cy="242" r="12" class="candle-halo"/><rect x="208.6" y="228" width="6.8" height="14" rx="2.4" class="candle"/>
+            <circle cx="250" cy="236" r="15" class="candle-halo"/><rect x="246" y="220" width="8" height="16" rx="2.8" class="candle"/>
+            <circle cx="288" cy="242" r="12" class="candle-halo"/><rect x="284.6" y="228" width="6.8" height="14" rx="2.4" class="candle"/>
+          </g>
+          <path class="ln accent thin" d="M186 268 Q216 276 250 270 Q284 276 314 268"/>
+        </g>
+        <g class="scene-fore">
+          <ellipse cx="250" cy="312" rx="170" ry="18" class="glowDisk floor-glow"/>
+          <ellipse cx="250" cy="312" rx="170" ry="18" class="ln gold thin"/>
+          <path class="ln accent thin" d="M40 326 Q120 314 200 324 M300 324 Q380 314 460 326"/>
+          <ellipse cx="250" cy="334" rx="210" ry="6" class="ground"/>
+        </g>
+      </svg>
+
+      <div class="chapter-body">
+        <span class="knot will-lit" aria-hidden="true"><svg viewBox="-34 -26 68 52"><use href="#orn-knot"/></svg></span>
+        <p class="chapter-num will-reveal">Chapter V</p>
+        <h2 class="chapter-title will-reveal">Reception</h2>
+        <p class="chapter-tag will-reveal">Please join us as we celebrate the newlyweds.</p>
+        <svg class="orn will-reveal" viewBox="0 0 220 24" aria-hidden="true"><use href="#orn-divider"/></svg>
+
+        <article class="card will-reveal">
+          <p class="card-row"><span class="card-label">Date</span><span class="card-value">Monday, 7 December 2026</span></p>
+          <p class="card-row"><span class="card-label">Time</span><span class="card-value">8 PM · Surat</span></p>
+          <p class="card-row"><span class="card-label">Venue</span>
+            <span class="card-value venue">
+              <strong>Farohar Farms</strong>
+              Beside Royal Dine Restaurant, Opposite Pal RTO
+              <span>Pal–Adajan · Surat, Gujarat 395009</span>
+            </span>
+          </p>
+          <div class="card-actions">
+            <a class="btn" data-maps="farohar" href="#" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.2-6-10a6 6 0 1 1 12 0c0 4.8-6 10-6 10Z"/><circle cx="12" cy="10.6" r="2.4"/></svg>Maps
+            </a>
+            <button class="btn" type="button" data-ics="reception">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5.5" width="16" height="15" rx="2.5"/><line x1="4" y1="10" x2="20" y2="10"/><line x1="8.5" y1="3.5" x2="8.5" y2="7.5"/><line x1="15.5" y1="3.5" x2="15.5" y2="7.5"/><path class="tick" d="M9 15.5 l2.2 2.2 4-4.5"/></svg>Calendar
+            </button>
+            <button class="btn btn--ghost" type="button" data-copy="Farohar Farms, Beside Royal Dine Restaurant, Opposite Pal RTO, Pal-Adajan, Surat, Gujarat 395009">Copy address</button>
+          </div>
+        </article>
+
+        <aside class="dua will-reveal" aria-label="A note from the couple">
+          <p class="dua-line">The honour of your presence is the greatest gift of all.</p>
+          <p class="dua-line dua-line--soft">We warmly request only your blessings and your company —<br>no gifts, covers or flowers, please.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ══════════════════ CODA · FOLLOW THE TALE ══════════════════ -->
+    <section class="chapter chapter--coda" id="follow" data-theme="paper" aria-label="Follow the tale">
+      <div class="frame frame--paper" aria-hidden="true"></div>
+      <div class="chapter-body chapter-body--coda">
+        <svg class="orn will-reveal" viewBox="0 0 220 24" aria-hidden="true"><use href="#orn-divider"/></svg>
+        <p class="chapter-num will-reveal">Coda</p>
+        <h2 class="chapter-title will-reveal">Follow the Tale</h2>
+        <p class="chapter-tag will-reveal">Some stories are told in chapters; ours, in photographs.</p>
+
+        <div class="follow-actions will-reveal">
+          <a class="btn btn--insta" href="https://www.instagram.com/_ourlove.archive_/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle class="ig-dot" cx="17.2" cy="6.8" r="1.1"/></svg>
+            <span class="btn-stack"><small>@_ourlove.archive_</small><em>our story, archived</em></span>
+          </a>
+          <a class="btn btn--ghost btn--tag" href="https://www.instagram.com/explore/tags/thetaleoffanda/" target="_blank" rel="noopener">
+            <span class="btn-stack"><small>#TheTaleofFandA</small><em>tag your photographs</em></span>
+          </a>
+          <button class="btn btn--ghost" type="button" id="shareBtn">
+            <span class="btn-stack"><small>Share the Tale</small><em>pass the invitation on</em></span>
+          </button>
+        </div>
+
+        <p class="rsvp-hint will-reveal">Bless us with your presence — that is the only RSVP we need.</p>
+      </div>
+    </section>
+
+    <!-- ══════════════════ CLOSE ══════════════════ -->
+    <section class="chapter chapter--close" id="close" data-theme="paper" aria-label="Closing">
+      <div class="frame frame--paper" aria-hidden="true"></div>
+      <div class="chapter-body chapter-body--close">
+        <svg class="orn will-reveal" viewBox="0 0 220 24" aria-hidden="true"><use href="#orn-divider"/></svg>
+        <h2 class="close-line will-reveal">The thread is tied.</h2>
+        <p class="close-dua will-reveal">May your blessings be the golden thread<br>that carries this tale forward.</p>
+        <p class="close-sign will-reveal">With love &amp; duas,<br><span class="close-names">Asim &amp; Femina</span></p>
+        <p class="close-dates will-reveal">4 – 7 December 2026 · Surat &amp; Botad</p>
+        <footer class="close-foot will-reveal">
+          <span>#TheTaleofFandA</span>
+          <span class="dot-sep" aria-hidden="true">·</span>
+          <span>Bismillah ir Rahman ir Rahim</span>
+        </footer>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="./assets/js/vendor/gsap.min.js"></script>
+  <script src="./assets/js/vendor/ScrollTrigger.min.js"></script>
+  <script src="./assets/js/vendor/lenis.min.js"></script>
+  <script src="./assets/js/calendar.js"></script>
+  <script src="./assets/js/audio.js"></script>
+  <script src="./assets/js/particles.js"></script>
+  <script src="./assets/js/thread.js"></script>
+  <script src="./assets/js/main.js"></script>
+  <script defer src="./assets/js/vendor/three.min.js"></script>
+  <script defer src="./assets/js/webgl.js"></script>
+</body>
+</html>
