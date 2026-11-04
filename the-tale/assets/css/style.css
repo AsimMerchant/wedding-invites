@@ -113,6 +113,9 @@ body[data-theme="reception"] {
 /* ---------- base ---------- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* the page is authored as light paper — opt out of browser auto-dark themes */
+:root { color-scheme: only light; }
+
 html { scroll-behavior: auto; }
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
