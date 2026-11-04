@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="color-scheme" content="only light">
+  <meta name="robots" content="noindex">
+  <title>Lab · disc quality test · The Tale of F &amp; A</title>
+  <link rel="icon" type="image/png" href="./assets/img/favicon-crest.png">
+  <link rel="stylesheet" href="./assets/css/reel.css?v=lab1">
+  <style>
+    /* lab-specific: hide editorial overlay, keep the stage pure */
+    .ed { display: none !important; }
+    .lab-note {
+      position: fixed; z-index: 10; bottom: 1rem; left: 50%; transform: translateX(-50%);
+      font-family: "Marcellus", serif; font-size: .62rem; letter-spacing: .3em;
+      text-transform: uppercase; color: rgba(36,64,107,.5); pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="stage"></canvas>
+  <p class="lab-note">lab · disc quality test</p>
+  <script src="./assets/js/vendor/three.min.js"></script>
+  <script src="./assets/js/lab.js?v=1"></script>
+</body>
+</html>
