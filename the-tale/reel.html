@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="color-scheme" content="only light">
+  <title>The Reel · Asim weds Femina · 4–7 December 2026</title>
+  <meta name="description" content="Scrub through the chapters of The Tale of F & A — Mehendi, Haldi, Sangeet, Baraat & Nikaah, Reception. #TheTaleofFandA">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="./assets/img/favicon-crest.png">
+  <meta name="theme-color" content="#eef1ea">
+
+  <link rel="preload" href="./assets/fonts/pinyonscript-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./assets/fonts/marcellus-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="./assets/css/reel.css?v=r1">
+  <noscript><meta http-equiv="refresh" content="0; url=./"></noscript>
+</head>
+<body>
+
+  <canvas id="stage" aria-hidden="true"></canvas>
+
+  <!-- editorial overlay (synced to the focused plate) -->
+  <header class="ed ed--top">
+    <a class="ed-back" href="./">&larr; the invitation</a>
+    <p class="ed-eyebrow ed-swap" id="rNum">Chapter I</p>
+    <h1 class="ed-name ed-swap" id="rName">Mehendi</h1>
+    <dl class="ed-meta ed-swap">
+      <div><dt>Date</dt><dd id="rDate">Friday, 4 December 2026</dd></div>
+      <div><dt>Time</dt><dd id="rTime">From 11 AM onwards</dd></div>
+      <div><dt>Venue</dt><dd id="rVenue">53, Saffron, 5th Floor · Karimabad Society · Surat</dd></div>
+    </dl>
+  </header>
+
+  <footer class="ed ed--bottom">
+    <p class="ed-tag ed-swap" id="rTag">Let every hand be hennaed, and every heart be glad.</p>
+    <div class="ed-actions" id="rActions">
+      <a class="rbtn" id="rMaps" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.2-6-10a6 6 0 1 1 12 0c0 4.8-6 10-6 10Z"/><circle cx="12" cy="10.6" r="2.4"/></svg>Maps
+      </a>
+      <button class="rbtn" type="button" id="rCal" data-ics="mehendi">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5.5" width="16" height="15" rx="2.5"/><line x1="4" y1="10" x2="20" y2="10"/><line x1="8.5" y1="3.5" x2="8.5" y2="7.5"/><line x1="15.5" y1="3.5" x2="15.5" y2="7.5"/></svg>Calendar
+      </button>
+      <button class="rbtn rbtn--ghost" type="button" id="rCopy">Copy address</button>
+    </div>
+    <p class="ed-count" id="rProg" aria-hidden="true">
+      <span class="prog-dot on"></span><span class="prog-dot"></span><span class="prog-dot"></span><span class="prog-dot"></span><span class="prog-dot"></span>
+    </p>
+    <p class="ed-hint">scroll or drag to move between chapters</p>
+  </footer>
+
+  <p class="sr-only" aria-live="polite" id="rLive"></p>
+
+  <script src="./assets/js/vendor/three.min.js"></script>
+  <script src="./assets/js/vendor/gsap.min.js"></script>
+  <script src="./assets/js/calendar.js"></script>
+  <script src="./assets/js/reel.js"></script>
+</body>
+</html>
