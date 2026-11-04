@@ -22,6 +22,7 @@
 
   /* ───────── chapter facts (mirror the invitation) ───────── */
   var GOLD = "#d9b36a", INK = "#24406b";
+  var BACK_RIM = "THE TALE OF F & A · #THETALEOFFANDA · ASIM & FEMINA · ";
   var CHAPTERS = [
     {
       key: "mehendi", num: "CHAPTER I", name: "Mehendi",
@@ -29,7 +30,9 @@
       venue: "53, Saffron, 5th Floor · Karimabad Society · Surat",
       tag: "Let every hand be hennaed, and every heart be glad.",
       rim: "ASIM WEDS FEMINA · THE TALE OF F & A · 4 — 7 DECEMBER 2026 · ",
-      paint: "mehendi"
+      paint: "mehendi",
+      frontDate: "FRIDAY · 4 DECEMBER 2026", dateColor: "#e8a13c",
+      backPal: { bg1: "#24402f", bg2: "#101d16", ink: "#e9e2c8", sub: "rgba(233,226,200,.66)" }
     },
     {
       key: "haldi", num: "CHAPTER II", name: "Haldi",
@@ -37,7 +40,9 @@
       venue: "Mahadev Hotel Restaurant & Banquets · Botad",
       tag: "A shower of turmeric, a morning of laughter.",
       rim: "THE TALE OF F & A · HALDI · 5 DECEMBER 2026 · BOTAD · ASIM & FEMINA · ",
-      paint: "haldi"
+      paint: "haldi",
+      frontDate: "SATURDAY · 5 DECEMBER 2026", dateColor: "#8a6a2a",
+      backPal: { bg1: "#5f4a1c", bg2: "#33260b", ink: "#f2e4c2", sub: "rgba(242,228,194,.66)" }
     },
     {
       key: "sangeet", num: "CHAPTER III", name: "Sangeet",
@@ -45,7 +50,9 @@
       venue: "Mahadev Hotel Restaurant & Banquets · Botad",
       tag: "Where every step keeps beat, and the night learns to dance.",
       rim: "#THETALEOFFANDA · ASIM & FEMINA · 4 — 7 DECEMBER 2026 · ",
-      paint: "sangeet"
+      paint: "sangeet",
+      frontDate: "SATURDAY · 5 DECEMBER 2026", dateColor: "#e9c46a",
+      backPal: { bg1: "#1c2848", bg2: "#0b1024", ink: "#ece2c8", sub: "rgba(236,226,200,.64)" }
     },
     {
       key: "nikaah", num: "CHAPTER IV", name: "Baraat & Nikaah",
@@ -53,7 +60,9 @@
       venue: "Mahadev Hotel Restaurant & Banquets · Botad",
       tag: "The procession arrives; two lives are joined by a single word — Qubool hai.",
       rim: "NIKAAH · 6 DECEMBER 2026 · BOTAD · QUBOOL HAI · THE TALE OF F & A · ",
-      paint: "nikaah"
+      paint: "nikaah",
+      frontDate: "SUNDAY · 6 DECEMBER 2026", dateColor: "#a3803c",
+      backPal: { bg1: "#2c3450", bg2: "#171d30", ink: "#e8e4d4", sub: "rgba(232,228,212,.66)" }
     },
     {
       key: "reception", num: "CHAPTER V", name: "Reception",
@@ -61,7 +70,9 @@
       venue: "Farohar Farms · Pal-Adajan · Surat",
       tag: "Please join us as we celebrate the newlyweds.",
       rim: "RECEPTION · 7 DECEMBER 2026 · SURAT · THE TALE OF F & A · ASIM & FEMINA · ",
-      paint: "reception"
+      paint: "reception",
+      frontDate: "MONDAY · 7 DECEMBER 2026", dateColor: "#e9d5b8",
+      backPal: { bg1: "#40222e", bg2: "#200f16", ink: "#f0e2cf", sub: "rgba(240,226,207,.66)" }
     }
   ];
   var N = CHAPTERS.length, SPACING = 2.62;
@@ -115,6 +126,47 @@
     for (var i = 0; i < text.length; i++) x.fillText(text[i], lx + i * step, cy);
   }
 
+  /* curved text that follows the disc — top arc reads upright along the top,
+     bottom arc reads upright along the bottom (badge/record-label style) */
+  function arcLayout(text, R, size, ls, maxSpan) {
+    var step = (size * ls) / R;
+    var span = step * Math.max(1, text.length - 1);
+    if (span > maxSpan) { span = maxSpan; step = span / Math.max(1, text.length - 1); }
+    return { step: step, span: span };
+  }
+  function topArc(x, text, cx, cy, R, size, color, ls, font) {
+    var L = arcLayout(text, R, size, ls, 2.9);
+    x.save();
+    x.fillStyle = color;
+    x.font = size + "px " + (font || "'Marcellus', serif");
+    x.textAlign = "center"; x.textBaseline = "middle";
+    for (var i = 0; i < text.length; i++) {
+      var a = -Math.PI / 2 - L.span / 2 + i * L.step;
+      x.save();
+      x.translate(cx + R * Math.cos(a), cy + R * Math.sin(a));
+      x.rotate(a + Math.PI / 2);
+      x.fillText(text[i], 0, 0);
+      x.restore();
+    }
+    x.restore();
+  }
+  function bottomArc(x, text, cx, cy, R, size, color, ls, font) {
+    var L = arcLayout(text, R, size, ls, 2.9);
+    x.save();
+    x.fillStyle = color;
+    x.font = size + "px " + (font || "'Marcellus', serif");
+    x.textAlign = "center"; x.textBaseline = "middle";
+    for (var i = 0; i < text.length; i++) {
+      var a = Math.PI / 2 + L.span / 2 - i * L.step;
+      x.save();
+      x.translate(cx + R * Math.cos(a), cy + R * Math.sin(a));
+      x.rotate(a - Math.PI / 2);
+      x.fillText(text[i], 0, 0);
+      x.restore();
+    }
+    x.restore();
+  }
+
   /* ───────── poster painters (1024×1024) ───────── */
   var PAINT = {
     mehendi: function (x, S) {
@@ -153,7 +205,6 @@
       x.fillStyle = "#f0dca4"; x.font = "150px 'Pinyon Script', cursive";
       x.fillText("Mehendi", S/2, 268);
       x.shadowBlur = 0;
-      capsLine(x, "CHAPTER I · 4 DECEMBER · SURAT", S/2, 330, 19, "#e8a13c", 34);
     },
     haldi: function (x, S) {
       var g = x.createLinearGradient(0, 0, 0, S);
@@ -189,7 +240,6 @@
       x.fillStyle = "#6b4a12"; x.font = "150px 'Pinyon Script', cursive";
       x.fillText("Haldi", S/2, 258);
       x.shadowBlur = 0;
-      capsLine(x, "CHAPTER II · 5 DECEMBER · BOTAD", S/2, 324, 19, "#8a6a2a", 34);
     },
     sangeet: function (x, S) {
       var g = x.createLinearGradient(0, 0, 0, S);
@@ -227,7 +277,6 @@
       x.fillStyle = "#f0dca4"; x.font = "150px 'Pinyon Script', cursive";
       x.fillText("Sangeet", S/2, 800);
       x.shadowBlur = 0;
-      capsLine(x, "CHAPTER III · 5 DECEMBER · BOTAD", S/2, 864, 19, "#e9c46a", 34);
     },
     nikaah: function (x, S) {
       var g = x.createLinearGradient(0, 0, 0, S);
@@ -262,7 +311,6 @@
       x.fillStyle = "#3a4a6b"; x.font = "132px 'Pinyon Script', cursive";
       x.fillText("Baraat & Nikaah", S/2, 252);
       x.shadowBlur = 0;
-      capsLine(x, "CHAPTER IV · 6 DECEMBER · BOTAD", S/2, 318, 19, "#a3803c", 34);
     },
     reception: function (x, S) {
       var g = x.createLinearGradient(0, 0, 0, S);
@@ -298,7 +346,6 @@
       x.fillStyle = "#f0dca4"; x.font = "150px 'Pinyon Script', cursive";
       x.fillText("Reception", S/2, 262);
       x.shadowBlur = 0;
-      capsLine(x, "CHAPTER V · 7 DECEMBER · SURAT", S/2, 328, 19, "#e9d5b8", 34);
     }
   };
 
@@ -307,6 +354,11 @@
     c.width = c.height = S;
     var x = c.getContext("2d");
     PAINT[ch.paint](x, S);
+    // per-chapter date, arced along the bottom of the disc
+    x.save();
+    x.shadowColor = "rgba(0,0,0,.4)"; x.shadowBlur = 12;
+    bottomArc(x, ch.frontDate, S/2, S/2, 396, 26, ch.dateColor, 0.72);
+    x.restore();
     // rim band + arc text + grain
     x.strokeStyle = GOLD; x.lineWidth = 30;
     x.beginPath(); x.arc(S/2, S/2, 472, 0, Math.PI * 2); x.stroke();
@@ -317,84 +369,53 @@
     return c;
   }
 
-  /* B-side label: date / time / venue around the printed spindle */
+  /* B-side label — muted, themed, everything curved like a real record label */
   function paintBack(ch) {
     var S = 1024, cx = S/2, cy = S/2, c = document.createElement("canvas");
     c.width = c.height = S;
     var x = c.getContext("2d");
+    var P = ch.backPal;
     var g = x.createLinearGradient(0, 0, 0, S);
-    g.addColorStop(0, "#f7f2e4"); g.addColorStop(1, "#ecdfc2");
+    g.addColorStop(0, P.bg1); g.addColorStop(1, P.bg2);
     x.fillStyle = g; x.fillRect(0, 0, S, S);
-    var v = x.createRadialGradient(cx, cy, S*0.3, cx, cy, S*0.66);
-    v.addColorStop(0, "rgba(255,252,242,.5)"); v.addColorStop(1, "rgba(96,78,38,.22)");
+    var v = x.createRadialGradient(cx, cy, S*0.18, cx, cy, S*0.62);
+    v.addColorStop(0, "rgba(255,255,255,.05)"); v.addColorStop(1, "rgba(0,0,0,.38)");
     x.fillStyle = v; x.fillRect(0, 0, S, S);
 
-    // rim band + inner ring (mirror of the front)
+    // rim band + outer arc
     x.strokeStyle = GOLD; x.lineWidth = 30;
     x.beginPath(); x.arc(cx, cy, 472, 0, Math.PI * 2); x.stroke();
-    x.strokeStyle = "rgba(217,179,106,.35)"; x.lineWidth = 2;
+    x.strokeStyle = "rgba(217,179,106,.3)"; x.lineWidth = 2;
     x.beginPath(); x.arc(cx, cy, 440, 0, Math.PI * 2); x.stroke();
+    ringText(x, BACK_RIM, cx, cy, 428, 30, "rgba(240,220,164,.85)", 0);
 
-    // printed spindle at the center
+    // name + chapter, arced along the top
+    var nameSize = ch.name.length > 10 ? 84 : 100;
+    topArc(x, ch.name, cx, cy, 322, nameSize, P.ink, 0.6, "'Pinyon Script', cursive");
+    topArc(x, ch.num, cx, cy, 252, 24, P.sub, 0.9);
+
+    // date & time, arced around the spindle
+    topArc(x, ch.frontDate, cx, cy, 196, 29, P.ink, 0.68);
+    bottomArc(x, ch.time.toUpperCase(), cx, cy, 196, 29, P.ink, 0.68);
+
+    // venue label + venue, arced along the bottom
+    bottomArc(x, "V E N U E", cx, cy, 300, 20, P.sub, 0.8);
+    bottomArc(x, ch.venue.toUpperCase(), cx, cy, 356, 26, P.ink, 0.68);
+
+    // label perforation ring + printed spindle
+    x.strokeStyle = "rgba(217,179,106,.45)"; x.lineWidth = 2;
+    x.setLineDash([3, 9]);
+    x.beginPath(); x.arc(cx, cy, 150, 0, Math.PI * 2); x.stroke();
+    x.setLineDash([]);
     x.strokeStyle = GOLD; x.lineWidth = 6;
     x.beginPath(); x.arc(cx, cy, 46, 0, Math.PI * 2); x.stroke();
-    x.fillStyle = "#e4d7b8";
+    x.fillStyle = "rgba(0,0,0,.2)";
     x.beginPath(); x.arc(cx, cy, 36, 0, Math.PI * 2); x.fill();
     x.save(); x.translate(cx, cy); x.rotate(Math.PI / 4);
     x.fillStyle = GOLD; x.fillRect(-5, -5, 10, 10);
     x.restore();
 
-    // header
-    capsLine(x, "THE TALE OF F & A", cx, 138, 15, "#a3803c", 27);
-    x.textAlign = "center";
-    x.fillStyle = "#24406b";
-    x.font = "118px 'Pinyon Script', cursive";
-    x.fillText(ch.name, cx, 272);
-    x.strokeStyle = GOLD; x.lineWidth = 2.5;
-    x.beginPath(); x.moveTo(cx - 150, 316); x.lineTo(cx + 150, 316); x.stroke();
-    x.save(); x.translate(cx, 316); x.rotate(Math.PI / 4);
-    x.fillStyle = GOLD; x.fillRect(-6, -6, 12, 12);
-    x.restore();
-
-    // date (left) · time (right), flanking the spindle — sized to stay off the rim
-    x.font = "23px 'Marcellus', serif";
-    x.fillStyle = "#a3803c";
-    x.fillText("D A T E", 318, 408);
-    x.fillText("T I M E", 706, 408);
-    x.fillStyle = "#24406b";
-    x.font = "28px 'Marcellus', serif";
-    x.fillText(ch.date, 318, 452);
-    var tLines = ch.time.split(" · ");
-    tLines.slice(0, 2).forEach(function (L, i) {
-      x.fillText(L, 706, 452 + i * 36);
-    });
-
-    // venue, centered below (clear of the hub ring)
-    x.font = "23px 'Marcellus', serif";
-    x.fillStyle = "#a3803c";
-    x.fillText("V E N U E", cx, 640);
-    x.fillStyle = "#24406b";
-    x.font = "33px 'Marcellus', serif";
-    var parts = ch.venue.split(" · ");
-    parts.forEach(function (p, i) {
-      x.fillText(p, cx, 688 + i * 42);
-    });
-
-    // tagline
-    x.fillStyle = "rgba(36,64,107,.75)";
-    x.font = "italic 30px 'Cormorant Garamond', serif";
-    var words = ch.tag.split(" "), line = "", lines = [];
-    words.forEach(function (w) {
-      if ((line + " " + w).length > 38) { lines.push(line); line = w; }
-      else line = (line ? line + " " : "") + w;
-    });
-    if (line) lines.push(line);
-    lines.slice(0, 2).forEach(function (L, i) {
-      x.fillText(L, cx, 824 + i * 36);
-    });
-
-    capsLine(x, "#THETALEOFFANDA", cx, 906, 12, "#a3803c", 21);
-    grain(x, S, 2000);
+    grain(x, S, 2200);
     return c;
   }
 
