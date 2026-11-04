@@ -44,31 +44,13 @@ body::after {
 .ed--bottom { bottom: clamp(1.2rem, 4vh, 3rem); left: 0; right: 0; text-align: center; }
 
 .ed-back {
-  pointer-events: auto; display: inline-block; margin-bottom: 1.6rem;
+  pointer-events: auto; display: inline-block;
   font-family: "Marcellus", serif; font-size: .72rem; letter-spacing: .3em;
   text-transform: uppercase; color: var(--ink-soft); text-decoration: none;
   border-bottom: 1px solid color-mix(in srgb, var(--gold) 50%, transparent);
   padding-bottom: .25rem; transition: color .3s;
 }
 .ed-back:hover { color: var(--gold); }
-
-.ed-eyebrow {
-  font-family: "Marcellus", serif; font-size: .72rem; letter-spacing: .42em;
-  text-transform: uppercase; color: var(--gold); margin-bottom: .55rem;
-}
-.ed-name {
-  font-family: "Pinyon Script", cursive; font-weight: 400;
-  font-size: clamp(3rem, 6.5vw, 5.2rem); line-height: 1; color: var(--ink);
-  margin-bottom: 1.3rem;
-}
-.ed-meta { display: grid; gap: .5rem 1.1rem; }
-.ed-meta div { display: grid; grid-template-columns: 74px 1fr; gap: 1rem; align-items: baseline; }
-.ed-meta dt {
-  font-family: "Marcellus", serif; font-size: .62rem; letter-spacing: .3em;
-  text-transform: uppercase; color: var(--gold);
-}
-.ed-meta dd { font-size: 1.06rem; color: var(--ink); line-height: 1.45; }
-.ed-meta dd, .ed-tag { text-wrap: balance; }
 
 .ed-tag {
   font-style: italic; font-size: clamp(1.02rem, 2.2vw, 1.22rem);
@@ -105,15 +87,17 @@ body::after {
   text-transform: uppercase; color: var(--ink-soft); opacity: .8;
 }
 
-/* overlay swap animation */
+/* overlay swap + boot reveal — CSS transitions (compositor-driven, no tween lib) */
 .ed-swap { transition: opacity .45s var(--ease), transform .45s var(--ease); }
-.ed-swap.out { opacity: 0; transform: translateY(10px); }
+.ed-swap.out { opacity: 0; transform: translateY(8px); transition-duration: .22s; }
+
+.ed { opacity: 0; transform: translateY(18px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+body.booted .ed { opacity: 1; transform: none; }
+
+/* the back label carries its own tagline — hide the overlay's while flipped */
+body.disc-flipped .ed-tag { opacity: 0; transform: translateY(8px); }
 
 @media (max-width: 640px) {
-  .ed--top { max-width: 78vw; }
-  .ed-name { font-size: clamp(2.7rem, 12vw, 3.6rem); }
-  .ed-meta div { grid-template-columns: 64px 1fr; gap: .7rem; }
-  .ed-meta dd { font-size: .98rem; }
   .ed-tag { font-size: 1rem; }
   .rbtn { padding: .45rem .85rem; font-size: .62rem; }
 }
