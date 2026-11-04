@@ -317,6 +317,87 @@
     return c;
   }
 
+  /* B-side label: date / time / venue around the printed spindle */
+  function paintBack(ch) {
+    var S = 1024, cx = S/2, cy = S/2, c = document.createElement("canvas");
+    c.width = c.height = S;
+    var x = c.getContext("2d");
+    var g = x.createLinearGradient(0, 0, 0, S);
+    g.addColorStop(0, "#f7f2e4"); g.addColorStop(1, "#ecdfc2");
+    x.fillStyle = g; x.fillRect(0, 0, S, S);
+    var v = x.createRadialGradient(cx, cy, S*0.3, cx, cy, S*0.66);
+    v.addColorStop(0, "rgba(255,252,242,.5)"); v.addColorStop(1, "rgba(96,78,38,.22)");
+    x.fillStyle = v; x.fillRect(0, 0, S, S);
+
+    // rim band + inner ring (mirror of the front)
+    x.strokeStyle = GOLD; x.lineWidth = 30;
+    x.beginPath(); x.arc(cx, cy, 472, 0, Math.PI * 2); x.stroke();
+    x.strokeStyle = "rgba(217,179,106,.35)"; x.lineWidth = 2;
+    x.beginPath(); x.arc(cx, cy, 440, 0, Math.PI * 2); x.stroke();
+
+    // printed spindle at the center
+    x.strokeStyle = GOLD; x.lineWidth = 6;
+    x.beginPath(); x.arc(cx, cy, 46, 0, Math.PI * 2); x.stroke();
+    x.fillStyle = "#e4d7b8";
+    x.beginPath(); x.arc(cx, cy, 36, 0, Math.PI * 2); x.fill();
+    x.save(); x.translate(cx, cy); x.rotate(Math.PI / 4);
+    x.fillStyle = GOLD; x.fillRect(-5, -5, 10, 10);
+    x.restore();
+
+    // header
+    capsLine(x, "THE TALE OF F & A", cx, 138, 15, "#a3803c", 27);
+    x.textAlign = "center";
+    x.fillStyle = "#24406b";
+    x.font = "118px 'Pinyon Script', cursive";
+    x.fillText(ch.name, cx, 272);
+    x.strokeStyle = GOLD; x.lineWidth = 2.5;
+    x.beginPath(); x.moveTo(cx - 150, 316); x.lineTo(cx + 150, 316); x.stroke();
+    x.save(); x.translate(cx, 316); x.rotate(Math.PI / 4);
+    x.fillStyle = GOLD; x.fillRect(-6, -6, 12, 12);
+    x.restore();
+
+    // date (left) · time (right), flanking the spindle — sized to stay off the rim
+    x.font = "23px 'Marcellus', serif";
+    x.fillStyle = "#a3803c";
+    x.fillText("D A T E", 318, 408);
+    x.fillText("T I M E", 706, 408);
+    x.fillStyle = "#24406b";
+    x.font = "28px 'Marcellus', serif";
+    x.fillText(ch.date, 318, 452);
+    var tLines = ch.time.split(" · ");
+    tLines.slice(0, 2).forEach(function (L, i) {
+      x.fillText(L, 706, 452 + i * 36);
+    });
+
+    // venue, centered below (clear of the hub ring)
+    x.font = "23px 'Marcellus', serif";
+    x.fillStyle = "#a3803c";
+    x.fillText("V E N U E", cx, 640);
+    x.fillStyle = "#24406b";
+    x.font = "33px 'Marcellus', serif";
+    var parts = ch.venue.split(" · ");
+    parts.forEach(function (p, i) {
+      x.fillText(p, cx, 688 + i * 42);
+    });
+
+    // tagline
+    x.fillStyle = "rgba(36,64,107,.75)";
+    x.font = "italic 30px 'Cormorant Garamond', serif";
+    var words = ch.tag.split(" "), line = "", lines = [];
+    words.forEach(function (w) {
+      if ((line + " " + w).length > 38) { lines.push(line); line = w; }
+      else line = (line ? line + " " : "") + w;
+    });
+    if (line) lines.push(line);
+    lines.slice(0, 2).forEach(function (L, i) {
+      x.fillText(L, cx, 824 + i * 36);
+    });
+
+    capsLine(x, "#THETALEOFFANDA", cx, 906, 12, "#a3803c", 21);
+    grain(x, S, 2000);
+    return c;
+  }
+
   /* ───────── disc factory (annulus, hub, shadow) ───────── */
   var shadowTex = (function () {
     var c = document.createElement("canvas");
@@ -331,48 +412,83 @@
 
   function buildDisc(ch) {
     var g = new THREE.Group();
+    var idx = CHAPTERS.indexOf(ch);
 
-    var shape = new THREE.Shape();
-    shape.absarc(0, 0, 1, 0, Math.PI * 2, false);
-    var hole = new THREE.Path();
-    hole.absarc(0, 0, 0.155, 0, Math.PI * 2, true);
-    shape.holes.push(hole);
-    var geo = new THREE.ExtrudeGeometry(shape, {
-      depth: 0.035, bevelEnabled: true, bevelThickness: 0.012, bevelSize: 0.012,
-      bevelSegments: 3, curveSegments: 96
-    });
-    geo.computeBoundingBox();
-    var bb = geo.boundingBox, sz = new THREE.Vector3();
-    bb.getSize(sz);
-    var uv = geo.attributes.uv;
-    for (var i = 0; i < uv.count; i++) {
-      uv.setXY(i, (uv.getX(i) - bb.min.x) / sz.x, (uv.getY(i) - bb.min.y) / sz.y);
-    }
-    var tex = new THREE.CanvasTexture(paintPoster(ch));
-    tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+    var frontTex = new THREE.CanvasTexture(paintPoster(ch));
+    frontTex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+    var backTex = new THREE.CanvasTexture(paintBack(ch));
+    backTex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+
     var faceMat = new THREE.MeshPhysicalMaterial({
-      map: tex, roughness: 0.34, metalness: 0.08,
+      map: frontTex, roughness: 0.34, metalness: 0.08,
       clearcoat: 1, clearcoatRoughness: 0.22
+    });
+    var backMat = new THREE.MeshPhysicalMaterial({
+      map: backTex, roughness: 0.4, metalness: 0.05,
+      clearcoat: 1, clearcoatRoughness: 0.25
     });
     var edgeMat = new THREE.MeshPhysicalMaterial({
       color: 0xcfd6de, roughness: 0.25, metalness: 0.35,
       clearcoat: 0.8, clearcoatRoughness: 0.2
     });
-    var disc = new THREE.Mesh(geo, [faceMat, edgeMat, faceMat]);
-    var tilt = new THREE.Group();
-    tilt.add(disc);
-    var hub = new THREE.Mesh(
-      new THREE.TorusGeometry(0.185, 0.028, 14, 48),
-      new THREE.MeshPhysicalMaterial({
-        color: 0xe8edf3, roughness: 0.12, metalness: 0.1,
-        transparent: true, opacity: 0.55, clearcoat: 1
-      })
+
+    /* flip group — rotates π on tap: poster front ↔ label back */
+    var flip = new THREE.Group();
+
+    // front face: annulus with planar-mapped poster
+    var ringGeo = new THREE.RingGeometry(0.156, 1, 96, 1);
+    var pos = ringGeo.attributes.position;
+    var ruv = ringGeo.attributes.uv;
+    for (var i = 0; i < ruv.count; i++) {
+      ruv.setXY(i, (pos.getX(i) + 1) / 2, (pos.getY(i) + 1) / 2);
+    }
+    var front = new THREE.Mesh(ringGeo, faceMat);
+    front.position.z = 0.0235;
+    front.userData.plateIdx = idx;
+    flip.add(front);
+
+    // back face: full printed label (pre-rotated; reads correct after flip)
+    var back = new THREE.Mesh(new THREE.CircleGeometry(1, 96), backMat);
+    back.rotation.y = Math.PI;
+    back.position.z = -0.0235;
+    back.userData.plateIdx = idx;
+    flip.add(back);
+
+    // clear plastic hubs on both faces
+    var hubGeo = new THREE.TorusGeometry(0.185, 0.026, 14, 48);
+    var hubMat = new THREE.MeshPhysicalMaterial({
+      color: 0xe8edf3, roughness: 0.12, metalness: 0.1,
+      transparent: true, opacity: 0.55, clearcoat: 1
+    });
+    var hubF = new THREE.Mesh(hubGeo, hubMat);
+    hubF.position.z = 0.03;
+    hubF.userData.plateIdx = idx;
+    flip.add(hubF);
+    var hubB = new THREE.Mesh(hubGeo, hubMat);
+    hubB.position.z = -0.03;
+    hubB.rotation.x = Math.PI;
+    hubB.userData.plateIdx = idx;
+    flip.add(hubB);
+
+    // rim wall (does not flip — symmetric)
+    var rimMesh = new THREE.Mesh(
+      new THREE.CylinderGeometry(1, 1, 0.045, 96, 1, true),
+      edgeMat
     );
-    hub.position.z = 0.03;
-    tilt.add(hub);
+    rimMesh.rotation.x = Math.PI / 2;
+    rimMesh.userData.plateIdx = idx;
+
+    var tilt = new THREE.Group();
+    tilt.add(flip);
+    tilt.add(rimMesh);
     g.add(tilt);
+
     g.userData.tilt = tilt;
-    g.userData.tex = tex;
+    g.userData.flip = flip;
+    g.userData.flipped = false;
+    g.userData.frontTex = frontTex;
+    g.userData.backTex = backTex;
+    g.userData.pick = [front, back, rimMesh, hubF, hubB];
 
     var shadow = new THREE.Mesh(
       new THREE.PlaneGeometry(2.5, 2.5),
@@ -383,7 +499,7 @@
     g.add(shadow);
     g.userData.shadow = shadow;
 
-    g.position.x = CHAPTERS.indexOf(ch) * SPACING;
+    g.position.x = idx * SPACING;
     carousel.add(g);
     return g;
   }
@@ -406,41 +522,72 @@
 
   /* ───────── overlay sync ───────── */
   var el = {
-    num: document.getElementById("rNum"), name: document.getElementById("rName"),
-    date: document.getElementById("rDate"), time: document.getElementById("rTime"),
-    venue: document.getElementById("rVenue"), tag: document.getElementById("rTag"),
+    tag: document.getElementById("rTag"),
     maps: document.getElementById("rMaps"), cal: document.getElementById("rCal"),
     copy: document.getElementById("rCopy"), live: document.getElementById("rLive"),
+    flipBtn: document.getElementById("rFlip"),
     dots: document.querySelectorAll(".prog-dot")
   };
   var focused = -1;
+
+  /* flip: poster front ↔ label back — animated in the render loop itself
+     (no tween-lib dependency: flips must work even when timers throttle) */
+  function setFlip(g, want, fast) {
+    if (!g || g.userData.flipped === want) return;
+    g.userData.flipped = want;
+    document.body.classList.toggle("disc-flipped", want);   // hide the overlay tagline (the back has its own)
+    var cur = g.userData.flip.rotation.y;
+    var target = want ? Math.PI : 0;
+    // shortest path around the circle
+    var diff = ((target - cur) % (Math.PI * 2) + Math.PI * 3) % (Math.PI * 2) - Math.PI;
+    g.userData.flipAnim = { from: cur, delta: diff, t0: performance.now(), dur: fast ? 550 : 1150 };
+    var ch = CHAPTERS[plates.indexOf(g)];
+    el.live.textContent = want
+      ? "Back of the " + ch.name + " disc: " + ch.date + ", " + ch.time + ", " + ch.venue
+      : "Front of the " + ch.name + " disc";
+  }
+
+  var raycaster = new THREE.Raycaster(), ndc = new THREE.Vector2();
+  var wpV = new THREE.Vector3(), ptV = new THREE.Vector3();
+  function tapDisc(clientX, clientY) {
+    ndc.set((clientX / window.innerWidth) * 2 - 1, -(clientY / window.innerHeight) * 2 + 1);
+    raycaster.setFromCamera(ndc, camera);
+    var g = plates[focused];
+    var hits = raycaster.intersectObjects(g.userData.pick, false);
+    var flip = hits.length > 0;
+    if (!flip) {
+      // tapped the spindle hole (or a hair off the rim) — still flip if the
+      // point lands within the disc: intersect the disc's plane, measure radius
+      g.getWorldPosition(wpV);
+      var plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), -wpV.z);
+      if (raycaster.ray.intersectPlane(plane, ptV)) {
+        var dx = ptV.x - wpV.x, dy = ptV.y - wpV.y;
+        flip = (dx * dx + dy * dy) <= 1.0;
+      }
+    }
+    if (flip) setFlip(g, !g.userData.flipped, false);
+  }
+
   function sync(idx, instant) {
     if (idx === focused) return;
+    var prev = focused;
     focused = idx;
+    if (prev >= 0 && plates[prev].userData.flipped) setFlip(plates[prev], false, true);
     var ch = CHAPTERS[idx];
     var apply = function () {
-      el.num.textContent = ch.num;
-      el.name.textContent = ch.name;
-      el.date.textContent = ch.date;
-      el.time.textContent = ch.time;
-      el.venue.textContent = ch.venue;
       el.tag.textContent = ch.tag;
       if (TALE.VENUES && TALE.VENUES[ch.key]) el.maps.href = TALE.VENUES[ch.key];
       el.cal.setAttribute("data-ics", ch.key);
       el.copy.setAttribute("data-copy", TALE.EVENTS[ch.key].location);
       for (var d = 0; d < el.dots.length; d++) el.dots[d].classList.toggle("on", d === idx);
     };
-    if (instant || !window.gsap) { apply(); }
+    if (instant) { apply(); }
     else {
-      gsap.to(".ed--top .ed-swap, .ed--bottom .ed-swap", {
-        opacity: 0, y: 8, duration: 0.22, ease: "power2.in",
-        onComplete: function () {
-          apply();
-          gsap.to(".ed--top .ed-swap, .ed--bottom .ed-swap", {
-            opacity: 1, y: 0, duration: 0.45, ease: "power2.out", stagger: 0.04
-          });
-        }
-      });
+      el.tag.classList.add("out");
+      setTimeout(function () {
+        apply();
+        el.tag.classList.remove("out");
+      }, 230);
     }
     el.live.textContent = ch.num + ": " + ch.name + ", " + ch.date + ", " + ch.time;
   }
@@ -485,19 +632,30 @@
     poke();
   }, { passive: false });
 
-  var dragX = null;
+  var dragX = null, dragY = null, dragT = 0, moved = 0;
   window.addEventListener("pointerdown", function (e) {
     if (e.target.closest(".rbtn, .ed-back")) return;
-    dragX = e.clientX;
+    dragX = e.clientX; dragY = e.clientY; dragT = performance.now(); moved = 0;
   });
   window.addEventListener("pointermove", function (e) {
     if (dragX === null) return;
     var dx = e.clientX - dragX;
+    moved += Math.abs(dx) + Math.abs(e.clientY - dragY);
+    dragY = e.clientY;
     dragX = e.clientX;
     tgt = clamp04(tgt - dx * 0.0042);
     poke();
   });
-  window.addEventListener("pointerup", function () { dragX = null; poke(); });
+  window.addEventListener("pointerup", function (e) {
+    if (dragX !== null && moved < 10 && performance.now() - dragT < 450) {
+      tapDisc(e.clientX, e.clientY);   // a clean tap on the disc = flip it
+    }
+    dragX = null; poke();
+  });
+
+  el.flipBtn.addEventListener("click", function () {
+    setFlip(plates[focused], !plates[focused].userData.flipped, false);
+  });
 
   window.addEventListener("keydown", function (e) {
     if (e.key === "ArrowRight") { tgt = clamp04(Math.round(tgt) + 1); poke(); }
@@ -525,6 +683,19 @@
     key.position.set(mx * 3.4, 2.4 - my * 1.6, 4);
   });
   TALE.gl = { _fps: 0, fps: function () { return TALE.gl._fps; } };
+  /* debug hook (harmless in prod) */
+  TALE.reelDebug = {
+    plates: plates,
+    setFlip: setFlip,
+    tap: tapDisc,
+    focused: function () { return focused; },
+    cam: camera,
+    state: function () {
+      return plates.map(function (p, i) {
+        return { i: i, flipped: p.userData.flipped, flipY: +p.userData.flip.rotation.y.toFixed(3) };
+      });
+    }
+  };
 
   gsap.ticker.add(function (time) {
     try {
@@ -541,6 +712,20 @@
       g.scale.setScalar(0.9 + 0.26 * f);
       g.position.y = Math.sin(time * 0.7 + i * 1.35) * 0.05;
       g.position.z = -Math.min(1, Math.abs(off)) * 0.55;
+
+      // flip animation (cubic in-out) + mid-flip lift toward the camera
+      var fa = g.userData.flipAnim;
+      if (fa) {
+        var ms = performance.now() - fa.t0;
+        var k = Math.min(1, ms / fa.dur);
+        var e = k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+        g.userData.flip.rotation.y = fa.from + fa.delta * e;
+        g.userData.flip.position.z = Math.sin(k * Math.PI) * 0.22;
+        if (k >= 1) {
+          g.userData.flipAnim = null;
+          g.userData.flip.position.z = 0;
+        }
+      }
     }
     var fi = THREE.MathUtils.clamp(Math.round(cur), 0, N - 1);
     glint.position.set(fi * SPACING, -0.05, 0.04);
@@ -570,14 +755,19 @@
   function boot() {
     sync(0, true);
     resize();
-    gsap.from(".ed--top, .ed--bottom", { autoAlpha: 0, y: 18, duration: 0.9, ease: "expo.out", stagger: 0.12, delay: 0.2 });
+    // reveal the overlay via CSS (robust under throttled timers)
+    requestAnimationFrame(function () { requestAnimationFrame(function () {
+      document.body.classList.add("booted");
+    }); });
   }
   if (document.fonts && document.fonts.ready) {
     document.fonts.ready.then(function () {
-      // posters use Pinyon/Marcellus — repaint once real fonts exist
+      // posters use Pinyon/Marcellus — repaint both faces once real fonts exist
       plates.forEach(function (g, i) {
-        g.userData.tex.image = paintPoster(CHAPTERS[i]);
-        g.userData.tex.needsUpdate = true;
+        g.userData.frontTex.image = paintPoster(CHAPTERS[i]);
+        g.userData.frontTex.needsUpdate = true;
+        g.userData.backTex.image = paintBack(CHAPTERS[i]);
+        g.userData.backTex.needsUpdate = true;
       });
       boot();
     });
