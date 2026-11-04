@@ -94,9 +94,6 @@ body::after {
 .ed { opacity: 0; transform: translateY(18px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
 body.booted .ed { opacity: 1; transform: none; }
 
-/* the back label carries its own tagline — hide the overlay's while flipped */
-body.disc-flipped .ed-tag { opacity: 0; transform: translateY(8px); }
-
 @media (max-width: 640px) {
   .ed-tag { font-size: 1rem; }
   .rbtn { padding: .45rem .85rem; font-size: .62rem; }
