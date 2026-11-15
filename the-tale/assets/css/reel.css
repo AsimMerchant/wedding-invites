@@ -84,7 +84,7 @@ body::after {
 
 .ed-hint {
   font-family: "Marcellus", serif; font-size: .6rem; letter-spacing: .34em;
-  text-transform: uppercase; color: var(--ink-soft); opacity: .8;
+  text-transform: uppercase; color: var(--ink-soft);
 }
 
 /* overlay swap + boot reveal — CSS transitions (compositor-driven, no tween lib) */
@@ -96,7 +96,9 @@ body.booted .ed { opacity: 1; transform: none; }
 
 @media (max-width: 640px) {
   .ed-tag { font-size: 1rem; }
-  .rbtn { padding: .45rem .85rem; font-size: .62rem; }
+  .rbtn { padding: .6rem 1rem; font-size: .62rem; }
+  /* keep the hint to one line — at .34em tracking it wraps past ~390px */
+  .ed-hint { font-size: .58rem; letter-spacing: .18em; }
 }
 
 @media (prefers-reduced-motion: reduce) {
