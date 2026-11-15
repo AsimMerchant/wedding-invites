@@ -40,6 +40,7 @@
       venue: "Mahadev Hotel Restaurant & Banquets · Botad",
       tag: "A shower of turmeric, a morning of laughter.",
       rim: "THE TALE OF F & A · HALDI · 5 DECEMBER 2026 · BOTAD · ASIM & FEMINA · ",
+      rimInk: "#8a6a2a",
       paint: "haldi",
       frontDate: "SATURDAY · 5 DECEMBER 2026", dateColor: "#8a6a2a",
       backPal: { bg1: "#5f4a1c", bg2: "#33260b", ink: "#f2e4c2", sub: "rgba(242,228,194,.66)" }
@@ -60,6 +61,7 @@
       venue: "Mahadev Hotel Restaurant & Banquets · Botad",
       tag: "The procession arrives; two lives are joined by a single word — Qubool hai.",
       rim: "NIKAAH · 6 DECEMBER 2026 · BOTAD · QUBOOL HAI · THE TALE OF F & A · ",
+      rimInk: "#8a6a2a",
       paint: "nikaah",
       frontDate: "SUNDAY · 6 DECEMBER 2026", dateColor: "#a3803c",
       backPal: { bg1: "#2c3450", bg2: "#171d30", ink: "#e8e4d4", sub: "rgba(232,228,212,.66)" }
@@ -364,7 +366,7 @@
     x.beginPath(); x.arc(S/2, S/2, 472, 0, Math.PI * 2); x.stroke();
     x.strokeStyle = "rgba(217,179,106,.35)"; x.lineWidth = 2;
     x.beginPath(); x.arc(S/2, S/2, 440, 0, Math.PI * 2); x.stroke();
-    ringText(x, ch.rim, S/2, S/2, 428, 30, "#f0dca4", 0);
+    ringText(x, ch.rim, S/2, S/2, 428, 30, ch.rimInk || "#f0dca4", 0);
     grain(x, S, 2600);
     return c;
   }
@@ -561,7 +563,7 @@
     var target = want ? Math.PI : 0;
     // shortest path around the circle
     var diff = ((target - cur) % (Math.PI * 2) + Math.PI * 3) % (Math.PI * 2) - Math.PI;
-    g.userData.flipAnim = { from: cur, delta: diff, t0: performance.now(), dur: fast ? 550 : 1150 };
+    g.userData.flipAnim = { from: cur, delta: diff, t0: performance.now(), dur: fast ? 550 : 1060 };
     var ch = CHAPTERS[plates.indexOf(g)];
     el.live.textContent = want
       ? "Back of the " + ch.name + " disc: " + ch.date + ", " + ch.time + ", " + ch.venue
@@ -574,6 +576,7 @@
     ndc.set((clientX / window.innerWidth) * 2 - 1, -(clientY / window.innerHeight) * 2 + 1);
     raycaster.setFromCamera(ndc, camera);
     var g = plates[focused];
+    if (!g) return;
     var hits = raycaster.intersectObjects(g.userData.pick, false);
     var flip = hits.length > 0;
     if (!flip) {
@@ -648,8 +651,8 @@
   window.addEventListener("wheel", function (e) {
     e.preventDefault();
     var d = e.deltaY;
-    if (e.deltaMode === 1) d *= 16;
-    tgt = clamp04(tgt + d * 0.0016);
+    if (e.deltaMode === 1) d *= 33;
+    tgt = clamp04(tgt + d * 0.008);
     poke();
   }, { passive: false });
 
@@ -688,6 +691,11 @@
     var w = window.innerWidth, h = window.innerHeight;
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
+    // narrow viewports: pull back until the focused disc (Ø 2.32 world units)
+    // clears the side margins — otherwise the rim text bleeds off-screen
+    var visW = 2 * Math.tan(FOV * Math.PI / 360) * CAMZ * camera.aspect;
+    var need = 2.32 / 0.94;
+    camera.position.z = visW < need ? CAMZ * need / visW : CAMZ;
     camera.updateProjectionMatrix();
   }
   window.addEventListener("resize", resize);
@@ -741,7 +749,8 @@
         var k = Math.min(1, ms / fa.dur);
         var e = k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
         g.userData.flip.rotation.y = fa.from + fa.delta * e;
-        g.userData.flip.position.z = Math.sin(k * Math.PI) * 0.22;
+        // lift rises fast, settles slow — the disc is picked up, then laid down
+        g.userData.flip.position.z = Math.sin(Math.PI * Math.pow(k, 0.9)) * 0.3;
         if (k >= 1) {
           g.userData.flipAnim = null;
           g.userData.flip.position.z = 0;
