@@ -1,7 +1,7 @@
 /* ═══ THE REEL — fixed editorial stage for The Tale of F & A ═══ */
-@font-face { font-family: "Pinyon Script"; src: url("../fonts/pinyonscript-400.woff2") format("woff2"); font-display: swap; }
-@font-face { font-family: "Marcellus"; src: url("../fonts/marcellus-400.woff2") format("woff2"); font-display: swap; }
-@font-face { font-family: "Cormorant Garamond"; src: url("../fonts/cormorantgaramond-400-italic.woff2") format("woff2"); font-style: italic; font-display: swap; }
+@font-face { font-family: "Pinyon Script"; src: url("../assets/fonts/pinyonscript-400.woff2") format("woff2"); font-display: swap; }
+@font-face { font-family: "Marcellus"; src: url("../assets/fonts/marcellus-400.woff2") format("woff2"); font-display: swap; }
+@font-face { font-family: "Cormorant Garamond"; src: url("../assets/fonts/cormorantgaramond-400-italic.woff2") format("woff2"); font-style: italic; font-display: swap; }
 
 :root { color-scheme: only light; }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
