@@ -38,8 +38,8 @@ link only with guests invited to all events.
 ```
 the-tale/
   index.html                     redirect to reception/ (carries no event info)
-  tale-…/                        FULL invite: index.html, reel*.html, events.js,
-                                 reel.js / lab.js / reel.css, og-card.png (secret path)
+  tale-…/                        FULL invite: index.html, reel.html, events.js,
+                                 reel.js / reel.css, og-card.png (secret path)
   reception/index.html           reception-only invite (same design assets, own OG card)
   assets/css/style.css           design system + per-chapter themes
   assets/js/main.js              veil, Lenis, themes, reveals, countdown, cursor, share
