@@ -182,8 +182,9 @@
     document.querySelectorAll(".knot").forEach(function (k) { k.classList.add("lit"); });
   }
 
-  /* ---------- countdown to the Mehendi ---------- */
-  var TARGET = new Date("2026-12-04T11:00:00+05:30").getTime();
+  /* ---------- countdown (data-target overrides, e.g. the reception page) ---------- */
+  var cdEl = document.getElementById("countdown");
+  var TARGET = new Date((cdEl && cdEl.getAttribute("data-target")) || "2026-12-04T11:00:00+05:30").getTime();
   var cd = {
     d: document.getElementById("cdDays"), h: document.getElementById("cdHours"),
     m: document.getElementById("cdMins"), s: document.getElementById("cdSecs"),
@@ -236,8 +237,8 @@
   if (shareBtn) {
     shareBtn.addEventListener("click", function () {
       var data = {
-        title: "Asim weds Femina — The Tale of F & A",
-        text: "Two souls with but a single thought, two hearts that beat as one. 4–7 December 2026 · Surat & Botad · #TheTaleofFandA",
+        title: shareBtn.getAttribute("data-title") || "Asim weds Femina — The Tale of F & A",
+        text: shareBtn.getAttribute("data-text") || "Two souls with but a single thought, two hearts that beat as one. #TheTaleofFandA",
         url: location.href
       };
       if (navigator.share) {
