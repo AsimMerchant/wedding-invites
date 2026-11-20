@@ -575,7 +575,7 @@ main { position: relative; z-index: 3; }
   border-bottom: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
 }
 .dua-line { font-style: italic; font-size: 1.12rem; line-height: 1.8; }
-.dua-line--soft { margin-top: .8rem; font-size: 1.02rem; color: var(--ink-soft); }
+.dua-line + .dua-line { margin-top: .8rem; }
 
 /* ---------- dust canvas ---------- */
 #dust { position: fixed; inset: 0; z-index: 2; pointer-events: none; }
