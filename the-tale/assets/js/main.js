@@ -148,11 +148,11 @@
     });
 
     // hero drift: the names part company as the tale begins
-    gsap.to(".name-a", {
+    gsap.to(".name-group-a", {
       yPercent: -26, ease: "none",
       scrollTrigger: { trigger: "#overture", start: "top top", end: "bottom top", scrub: true }
     });
-    gsap.to(".name-b", {
+    gsap.to(".name-group-b", {
       yPercent: 26, ease: "none",
       scrollTrigger: { trigger: "#overture", start: "top top", end: "bottom top", scrub: true }
     });

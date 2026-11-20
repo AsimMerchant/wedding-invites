@@ -438,13 +438,17 @@ main { position: relative; z-index: 3; }
 
 .overture-names { margin-top: 1rem; }
 .names { font-weight: 400; line-height: 1; }
+.name-group { display: block; }
 .name {
   display: block; font-family: var(--font-script);
   font-size: clamp(4.2rem, 16vw, 8.2rem);
-  background: linear-gradient(100deg, #8f6a2e 8%, #e7c982 30%, #b78e4e 48%, #f0dca4 66%, #9a7433 88%);
+  /* foil stops stay >=4.3:1 on paper and the stroke thickens Pinyon's hairlines —
+     the old pale foil bands (~1.2:1) vanished for low-vision readers */
+  background: linear-gradient(100deg, #6b4e1f 8%, #8f6a2e 30%, #7a5a26 48%, #8f6a2e 66%, #6b4e1f 88%);
   background-size: 220% 100%;
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent; color: transparent;
+  -webkit-text-stroke: .5px #7a5a26;
   animation: foilShift 9s ease-in-out infinite alternate;
 }
 @keyframes foilShift { from { background-position: 0% 0; } to { background-position: 100% 0; } }
@@ -454,9 +458,9 @@ main { position: relative; z-index: 3; }
   margin: 1rem 0;
 }
 .parents {
-  margin-top: 1.2rem; font-family: var(--font-caps); font-size: clamp(.68rem, 2vw, .82rem);
+  display: block; margin-top: .8rem; font-family: var(--font-caps);
+  font-size: clamp(.78rem, 2.4vw, .95rem);
   letter-spacing: .18em; text-transform: uppercase; color: var(--ink-soft);
-  display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem .9rem;
 }
 .dot-sep { color: var(--gold); }
 
@@ -547,10 +551,11 @@ main { position: relative; z-index: 3; }
   display: block; margin-top: .9rem;
   font-family: var(--font-script); font-size: clamp(2.4rem, 8vw, 3.6rem);
   letter-spacing: 0; text-transform: none; line-height: 1;
-  background: linear-gradient(100deg, #8f6a2e, #e7c982, #b78e4e, #f0dca4, #9a7433);
+  background: linear-gradient(100deg, #6b4e1f 8%, #8f6a2e 30%, #7a5a26 48%, #8f6a2e 66%, #6b4e1f 88%);
   background-size: 220% 100%;
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent; color: transparent;
+  -webkit-text-stroke: .5px #7a5a26;
   animation: foilShift 9s ease-in-out infinite alternate;
 }
 .close-dates {
